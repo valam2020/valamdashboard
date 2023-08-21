@@ -10,10 +10,6 @@
     "test": "ng test",
     "e2e": "ng e2e"
   },
-  "engines": {
-    "node": "16.4.2",
-    "npm": "8.5.3"
-  },
   "private": true,
   "dependencies": {
     "@angular/animations": "^16.2.0",
