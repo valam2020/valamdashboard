@@ -1,0 +1,27 @@
+
+<mat-toolbar>
+    <mat-toolbar-row>
+    <span>Valam Customer Dashboard</span>
+      
+</mat-toolbar-row>
+</mat-toolbar>
+<div class="conatiner-body div-login-center">
+    <form [formGroup]="loginForm">
+        <p>
+          <mat-form-field>
+            <input type="text" matInput placeholder="Username" formControlName="userName">
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field>
+            <input type="password" matInput placeholder="Password" formControlName="password">
+          </mat-form-field>
+        </p>
+
+        <div class="warn-button">
+            <button mat-raised-button color="warn" (click)="submitLoginForm()">Sign In</button>
+        </div>
+
+      </form>
+</div>

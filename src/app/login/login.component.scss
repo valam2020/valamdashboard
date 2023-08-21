@@ -1,0 +1,27 @@
+@import "../../assets/schema";
+
+.mat-toolbar {
+    --mat-toolbar-container-background-color: rgb(218, 218, 32);
+    --mat-toolbar-container-text-color:white;
+}
+
+.mat-mdc-raised-button:not(:disabled) {
+    background-color: rgb(218, 218, 32);
+}
+
+.mat-mdc-raised-button{
+    width: 26%;
+    height: 48px;
+}
+
+.mat-mdc-form-field{
+    display: block;
+}
+
+.div-login-center{
+    margin-top:100px;
+}
+
+.warn-button{
+    text-align: center;
+}
