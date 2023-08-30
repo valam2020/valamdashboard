@@ -15,4 +15,8 @@ export class DispatcherService {
    getDispatcher():Observable<any>{
     return this.httpService.get(ApiUrls.dispatcher.getAll);
    }
+
+   deleteDispatcher(dispatcherDto:any):Observable<any>{
+    return this.httpService.post(ApiUrls.dispatcher.delete,dispatcherDto)
+   }
 }

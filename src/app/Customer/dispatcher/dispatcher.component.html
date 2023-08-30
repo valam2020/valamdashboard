@@ -4,7 +4,7 @@
     </div>
 
     <div class="add-button">
-        <button mat-raised-button color="primary">Add Dispacher</button>
+        <button mat-raised-button color="primary" (click)="openDispatcher()">Add Dispacher</button>
     </div>
 
 <div class="example-container dispatcher mat-elevation-z8">
@@ -60,6 +60,13 @@
             <mat-cell *matCellDef="let row" data-label="address"> {{row.address}} </mat-cell>
         </ng-container>
 
+        <!-- phonenumber Column -->
+        <ng-container matColumnDef="delete">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>  </mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="address"> <mat-icon (click)="openDeleteDailog(deletetemplate,row)">delete</mat-icon></mat-cell>
+        </ng-container>
+
+
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;">
       </mat-row>
@@ -69,3 +76,20 @@
   </div>
   
 </div>
+
+
+
+<ng-template #deletetemplate>
+    <h1 mat-dialog-title>Delete Dispatcher </h1>
+<div mat-dialog-content>
+  <p>Are you sure want to Delete Dispatcher <b>{{selectedDispatcher.firstName}} {{selectedDispatcher.lastName}}</b></p>
+</div>
+<div mat-dialog-actions class="delete-dailog-actions">
+    <div class="no-css">
+        <button mat-raised-button mat-dialog-close>NO</button>
+    </div>
+    <div class="yes-css">
+        <button mat-raised-button class="confirm-css" color="accent" (click)="confirmDelete()">YES</button>
+    </div>
+</div>
+</ng-template>

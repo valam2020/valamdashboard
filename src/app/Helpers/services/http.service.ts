@@ -11,4 +11,16 @@ export class HttpService {
   get(url:string){
     return this.httpClient.get(environment.apiUrl+url);
   }
+
+  delete(url:string,id:number)
+  {
+     return this.httpClient.delete<any>(environment.apiUrl+url+'/'+id);
+  }
+
+
+  post(url:string,model:any)
+  {
+      return this.httpClient.post<any>(environment.apiUrl+url,model);
+  }
+
 }

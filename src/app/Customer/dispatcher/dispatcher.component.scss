@@ -20,6 +20,20 @@
 }
 
 
+.delete-dailog-actions{
+    float: right;
+    .yes-css{
+        .mat-mdc-raised-button:not(:disabled) {
+            background-color: rgb(218, 218, 32);
+        }
+    }
+    .no-css{
+        margin-right:10px;
+        .mat-mdc-raised-button:not(:disabled) {
+            background-color: #ffff;
+        }
+    }
+}
 
 
   @media screen and (max-width: 960px) {

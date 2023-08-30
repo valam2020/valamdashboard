@@ -1,5 +1,6 @@
 export const ApiUrls:any={
     dispatcher:{
-        getAll:"dispatcher/all"
+        getAll:"dispatcher/all",
+        delete:"dispatcher/delete"
     }
 }

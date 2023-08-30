@@ -6,11 +6,12 @@ import { DispatcherComponent } from '../dispatcher/dispatcher.component';
 import { DispatcherService } from '../customer-service/dispatcher-service.service';
 import { MaterialModule } from 'src/app/material/material.module';
 import { HeroImageComponent } from '../hero-image/hero-image.component';
+import { AddDispatcherComponent } from '../add-dispatcher/add-dispatcher.component';
 
 
 
 @NgModule({
-  declarations: [HomeComponent,DispatcherComponent,HeroImageComponent],
+    declarations: [HomeComponent,DispatcherComponent,HeroImageComponent,AddDispatcherComponent],
   imports: [
     CommonModule,
     CustomerRoutingModule,
