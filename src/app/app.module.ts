@@ -10,6 +10,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material/material.module';
 import { CustomerComponent } from './Customer/customer/customer-component/customer/customer.component';
 import { RouterModule } from '@angular/router';
+import { HttpService } from './Helpers/services/http.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,9 +27,10 @@ import { RouterModule } from '@angular/router';
   FormsModule,
   MaterialModule,
   ReactiveFormsModule,
-  RouterModule
+  RouterModule,
+  HttpClientModule
   ],
-  providers: [],
+  providers: [HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

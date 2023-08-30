@@ -10,26 +10,33 @@ export class CustomerComponent implements OnInit{
   menuSidebar = [
     {
       link_name: "Dashboard",
-      link: "/dashboard",
+      link: "/customer/dashboard/home",
       icon: "fa fa-home",
       sub_menu: []
-    }, {
-      link_name: "Category",
-      link: null,
-      icon: "fa fa-home",
-      sub_menu: [
-        {
-          link_name: "HTML & CSS",
-          link: "/html-n-css",
-        }, {
-          link_name: "JavaScript",
-          link: "/javascript",
-        }, {
-          link_name: "PHP & MySQL",
-          link: "/php-n-mysql",
-        }
-      ]
-    }
+    }, 
+    {
+      link_name: "Dispatcher",
+      link: "/customer/dashboard/dispatcher",
+      icon: "fa fa-address-book",
+      sub_menu: []
+    }, 
+    // {
+    //   link_name: "Category",
+    //   link: null,
+    //   icon: "fa fa-home",
+    //   sub_menu: [
+    //     {
+    //       link_name: "HTML & CSS",
+    //       link: "/html-n-css",
+    //     }, {
+    //       link_name: "JavaScript",
+    //       link: "/javascript",
+    //     }, {
+    //       link_name: "PHP & MySQL",
+    //       link: "/php-n-mysql",
+    //     }
+    //   ]
+    // }
   ]
 
   constructor() { }

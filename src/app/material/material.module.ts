@@ -10,6 +10,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatDividerModule} from '@angular/material/divider';
+import { MatDialogModule} from '@angular/material/dialog';
 
 const modules=[
   CommonModule,
@@ -22,7 +25,19 @@ const modules=[
   MatTableModule,
   MatSlideToggleModule,
   MatSelectModule,
-  MatOptionModule,MatIconModule];
+  MatOptionModule,
+  MatButtonModule,
+  MatCardModule,
+  MatInputModule,
+  MatMenuModule,
+  MatSelectModule,
+  MatSlideToggleModule,
+  MatTableModule,
+  MatToolbarModule,
+  MatPaginatorModule,
+  MatDividerModule,
+  MatDialogModule
+];
 
 @NgModule({
   declarations: [],
