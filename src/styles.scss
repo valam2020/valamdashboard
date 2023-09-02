@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import "~bootstrap/dist/css/bootstrap.css";
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
@@ -18,4 +20,20 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .mat-icon{
     cursor: pointer;
+}
+
+
+.delete-dailog-actions{
+    float: right;
+    .yes-css{
+        .mat-mdc-raised-button:not(:disabled) {
+            background-color: rgb(218, 218, 32);
+        }
+    }
+    .no-css{
+        margin-right:10px;
+        .mat-mdc-raised-button:not(:disabled) {
+            background-color: #ffff;
+        }
+    }
 }

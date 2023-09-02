@@ -19,4 +19,16 @@ export class DispatcherService {
    deleteDispatcher(dispatcherDto:any):Observable<any>{
     return this.httpService.post(ApiUrls.dispatcher.delete,dispatcherDto)
    }
+
+   getAllRoles():Observable<any>{
+    return this.httpService.get(ApiUrls.roles.all);
+   }
+
+   saveRole(roleModel:any):Observable<any>{
+      return this.httpService.post(ApiUrls.roles.create,roleModel);
+   }
+
+   editRole(roleModel:any):Observable<any>{
+    return this.httpService.post(ApiUrls.roles.update,roleModel);
+   }
 }

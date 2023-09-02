@@ -7,15 +7,17 @@ import { DispatcherService } from '../customer-service/dispatcher-service.servic
 import { MaterialModule } from 'src/app/material/material.module';
 import { HeroImageComponent } from '../hero-image/hero-image.component';
 import { AddDispatcherComponent } from '../add-dispatcher/add-dispatcher.component';
+import { RolesComponent } from '../roles/roles.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
 @NgModule({
-    declarations: [HomeComponent,DispatcherComponent,HeroImageComponent,AddDispatcherComponent],
+    declarations: [HomeComponent,DispatcherComponent,HeroImageComponent,AddDispatcherComponent,RolesComponent],
   imports: [
     CommonModule,
     CustomerRoutingModule,
-    MaterialModule
+    MaterialModule,ReactiveFormsModule,FormsModule
   ],
   providers:[DispatcherService]
 })
