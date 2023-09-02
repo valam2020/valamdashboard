@@ -26,6 +26,12 @@ export class CustomerComponent implements OnInit{
       icon: "fa fa-address-book",
       sub_menu: []
     }, 
+    {
+      link_name: "Register",
+      link: "/customer/dashboard/register",
+      icon: "fa fa-address-book",
+      sub_menu: []
+    }, 
     // {
     //   link_name: "Category",
     //   link: null,

@@ -9,11 +9,12 @@ import { HeroImageComponent } from '../hero-image/hero-image.component';
 import { AddDispatcherComponent } from '../add-dispatcher/add-dispatcher.component';
 import { RolesComponent } from '../roles/roles.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RegisterComponent } from '../register/register.component';
 
 
 
 @NgModule({
-    declarations: [HomeComponent,DispatcherComponent,HeroImageComponent,AddDispatcherComponent,RolesComponent],
+    declarations: [HomeComponent,DispatcherComponent,HeroImageComponent,AddDispatcherComponent,RolesComponent,RegisterComponent],
   imports: [
     CommonModule,
     CustomerRoutingModule,

@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { AddDispatcherComponent } from '../add-dispatcher/add-dispatcher.component';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -26,8 +27,18 @@ export class DispatcherComponent implements OnInit{
     lastName:"",
     id:""
   };
-  constructor(private dispatcherService:DispatcherService,public dialog: MatDialog){
-
+  public addDispatcherForm: FormGroup;
+  constructor(private dispatcherService:DispatcherService,public dialog: MatDialog, private fb:FormBuilder){
+      this.addDispatcherForm = this.fb.group({
+        firstName:["",[Validators.required]],
+        lastName:["",[Validators.required]],
+        email:["",[Validators.required]],
+        password:["",[Validators.required]],
+        confirmPassword:["",[Validators.required]],
+        phNum:["",[Validators.required]],
+        pincode:["",[Validators.required]],
+        address:["",[Validators.required]]
+      })
   }
 
   ngOnInit(): void {
@@ -39,14 +50,15 @@ export class DispatcherComponent implements OnInit{
 
   getAllDispatchers(){
     this.dispatcherService.getDispatcher().subscribe((data:any)=>{
-      this.dataSource =new MatTableDataSource(data);
+      let dataList = data.filter((s:any)=>{return s.deleted == false});
+      this.dataSource =new MatTableDataSource(dataList);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     })
   }
 
-  openDispatcher(){
-    const dialogRef = this.dialog.open(AddDispatcherComponent,{
+  openDispatcher(templateRef:any){
+    const dialogRef = this.dialog.open(templateRef,{
       width: '640px',disableClose: true 
     });
 
@@ -57,7 +69,7 @@ export class DispatcherComponent implements OnInit{
 
   openDeleteDailog(templateRef:any,row:any)
   {
-    this.selectedDispatcher=row;
+    this.selectedDispatcher = row;
     let deleteDialogRef = this.dialog.open(templateRef, {
       width: '600px',
       disableClose: true
@@ -76,6 +88,9 @@ export class DispatcherComponent implements OnInit{
     }
     this.dispatcherService.deleteDispatcher(dispatcherDto).subscribe((result:any)=>{
       console.log(result);
+      this.selectedDispatcher={};
+      this.dialog.closeAll();
+      this.getAllDispatchers();
     })
   }
 }
