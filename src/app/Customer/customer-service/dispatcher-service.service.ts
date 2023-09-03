@@ -16,6 +16,14 @@ export class DispatcherService {
     return this.httpService.get(ApiUrls.dispatcher.getAll);
    }
 
+   addDispatcher(dispatcher:any):Observable<any>{
+      return this.httpService.post(ApiUrls.dispatcher.add,dispatcher);
+   }
+
+   updateDispatcher(dispatcher:any):Observable<any>{
+    return this.httpService.post(ApiUrls.dispatcher.update,dispatcher);
+   }
+
    deleteDispatcher(dispatcherDto:any):Observable<any>{
     return this.httpService.post(ApiUrls.dispatcher.delete,dispatcherDto)
    }
@@ -31,4 +39,6 @@ export class DispatcherService {
    editRole(roleModel:any):Observable<any>{
     return this.httpService.post(ApiUrls.roles.update,roleModel);
    }
+
+
 }
