@@ -6,11 +6,12 @@
     <div class="register-add-form">
         <mat-card>
             <mat-card-header>
-              <mat-card-title>Add Register</mat-card-title>
+              <mat-card-title *ngIf="!isEditRegister">Add Register</mat-card-title>
+              <mat-card-title *ngIf="isEditRegister">Edit Register</mat-card-title>
 
             </mat-card-header>
             <mat-card-content>
-                <form [formGroup]="register">
+                <form [formGroup]="register" *ngIf="!isEditRegister">
                     <div class="row">
                         <div class="col-sm-12 col-md-6 margin-bottom_custom_css">
                             <mat-form-field >
@@ -88,10 +89,82 @@
                    
               
                 </form>
+
+                <form [formGroup]="editRegister" *ngIf="isEditRegister">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6 margin-bottom_custom_css">
+                            <mat-form-field >
+                                <input matInput placeholder="First Name" maxlength="50" formControlName="firstName" required>
+                                <mat-hint align="start">Edit First Name</mat-hint>
+                                <!-- <mat-hint align="end">{{addRole.controls['roleName'].value.length}} / 50</mat-hint> -->
+                                <!-- <mat-error class="error-message" *ngIf="userDetailsForm.get('roleName').hasError(validation.type) && (userDetailsForm.get('fullname').dirty || userDetailsForm.get('fullname').touched)">{{validation.message}}</mat-error> -->
+                                <!-- </mat-error> -->
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-sm-12 col-md-6 margin-bottom_custom_css">
+                            <mat-form-field >
+                                <input matInput placeholder="Last Name" maxlength="50" formControlName="lastName" required>
+                                <mat-hint align="start">Edit Last Name</mat-hint>
+                                <!-- <mat-hint align="end">{{addRole.controls['roleName'].value.length}} / 50</mat-hint> -->
+                                <!-- <mat-error class="error-message" *ngIf="userDetailsForm.get('roleName').hasError(validation.type) && (userDetailsForm.get('fullname').dirty || userDetailsForm.get('fullname').touched)">{{validation.message}}</mat-error> -->
+                                <!-- </mat-error> -->
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-sm-12 col-md-6 margin-bottom_custom_css">
+                            <mat-form-field >
+                                <input matInput placeholder="Email Id" maxlength="25" formControlName="email" required>
+                                <mat-hint align="start">Edit Email Id</mat-hint>
+                                <!-- <mat-hint align="end">{{addRole.controls['roleName'].value.length}} / 50</mat-hint> -->
+                                <!-- <mat-error class="error-message" *ngIf="userDetailsForm.get('roleName').hasError(validation.type) && (userDetailsForm.get('fullname').dirty || userDetailsForm.get('fullname').touched)">{{validation.message}}</mat-error> -->
+                                <!-- </mat-error> -->
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-sm-12 col-md-6 margin-bottom_custom_css">
+                            <mat-form-field >
+                                <input matInput placeholder="Phone Number" maxlength="10" formControlName="phoneNumber" required>
+                                <mat-hint align="start">Edit Phone Number</mat-hint>
+                                <!-- <mat-hint align="end">{{addRole.controls['roleName'].value.length}} / 50</mat-hint> -->
+                                <!-- <mat-error class="error-message" *ngIf="userDetailsForm.get('roleName').hasError(validation.type) && (userDetailsForm.get('fullname').dirty || userDetailsForm.get('fullname').touched)">{{validation.message}}</mat-error> -->
+                                <!-- </mat-error> -->
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-sm-12 col-md-6 margin-bottom_custom_css">
+                            <mat-form-field >
+                                <input matInput placeholder="Reason" maxlength="256" formControlName="reason" required>
+                                <mat-hint align="start">Edit Reason</mat-hint>
+                                <!-- <mat-hint align="end">{{addRole.controls['roleName'].value.length}} / 50</mat-hint> -->
+                                <!-- <mat-error class="error-message" *ngIf="userDetailsForm.get('roleName').hasError(validation.type) && (userDetailsForm.get('fullname').dirty || userDetailsForm.get('fullname').touched)">{{validation.message}}</mat-error> -->
+                                <!-- </mat-error> -->
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-sm-12 col-md-6 margin-bottom_custom_css">
+                            <mat-form-field >
+                                <input matInput placeholder="Address" maxlength="256" formControlName="address" required>
+                                <mat-hint align="start">Edit Address</mat-hint>
+                                <!-- <mat-hint align="end">{{addRole.controls['roleName'].value.length}} / 50</mat-hint> -->
+                                <!-- <mat-error class="error-message" *ngIf="userDetailsForm.get('roleName').hasError(validation.type) && (userDetailsForm.get('fullname').dirty || userDetailsForm.get('fullname').touched)">{{validation.message}}</mat-error> -->
+                                <!-- </mat-error> -->
+                            </mat-form-field>
+                        </div>
+
+                  </div>
+              
+              
+                   
+              
+                </form>
+
                 <div class="dailog-actions">
+                    <div class="back-css"><button mat-raised-button (click)="navigateToRegister()">Back</button></div>
                     <div><button mat-raised-button>Reset</button></div>
                     <div class="submit-css">
-                        <button mat-raised-button color="accent" (click)="submitRegister()">Submit</button>
+                        <button mat-raised-button color="accent" (click)="submitRegister()" *ngIf="!isEditRegister">Submit</button>
+                        <button mat-raised-button color="accent" (click)="updateRegister()" *ngIf="isEditRegister">Update</button>
                     </div>
                 </div>
             </mat-card-content>

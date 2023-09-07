@@ -14,7 +14,8 @@ export const ApiUrls:any={
     customer_login:{
         all:"customer_login/all",
         signup:"customer_login/signup",
-        delete:"customer_login/delete"
+        delete:"customer_login/delete",
+        update:"customer_login/update"
     }
 }
 

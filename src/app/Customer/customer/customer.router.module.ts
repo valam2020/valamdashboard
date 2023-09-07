@@ -28,6 +28,11 @@ const routes: Routes = [
     path:"add-register",
     component:AddRegisterComponent
    }
+   ,
+   {
+    path:"add-register/:editObject",
+    component:AddRegisterComponent
+   }
 ];
 
 @NgModule({

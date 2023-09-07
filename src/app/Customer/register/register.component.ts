@@ -109,4 +109,8 @@ export class RegisterComponent implements OnInit{
       }
     })
   }
+
+  redirectToEdit(row:any){
+    this.router.navigate(['customer/dashboard/add-register'], {queryParams: row});
+  }
 }

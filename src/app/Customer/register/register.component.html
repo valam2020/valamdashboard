@@ -47,7 +47,7 @@
                 <mat-header-cell *matHeaderCellDef mat-sort-header>  </mat-header-cell>
                 <mat-cell *matCellDef="let row" data-label="delete">
                     <button mat-raised-button class="mr-10" (click)="openDeleteDailog(deletetemplate,row)">Delete</button>
-                    <button mat-raised-button color="primary">Edit</button>
+                    <button mat-raised-button color="primary" (click)="redirectToEdit(row)">Edit</button>
                      </mat-cell>
             </ng-container>
     

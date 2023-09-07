@@ -14,6 +14,13 @@
             }
         }
     }
+
+    .mat-column-delete{
+        .mat-mdc-raised-button{
+            margin-left:15px;
+        }
+    }
+
     .register-add-form{
         margin-bottom: 25px;
         .mat-mdc-card-header{

@@ -54,6 +54,10 @@ export class DispatcherService {
 
   deleteRegister(id:any):Observable<any>{
     return this.httpService.delete(ApiUrls.customer_login.delete,id);
-   }
+  }
+
+  updateRegister(register:any):Observable<any>{
+    return this.httpService.post(ApiUrls.customer_login.update,register);
+  }
 
 }
