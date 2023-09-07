@@ -1,19 +1,5 @@
-.register-css{
-    .add-button{
-        margin-bottom: 10px;
-        @media (min-width:768px) {
-            text-align: right;
-        }
-
-        .mat-mdc-raised-button:not(:disabled){
-            padding: 25px;
-            background: cadetblue;
-
-            @media (max-width:768px) {
-                width: 100%;
-            }
-        }
-    }
+.add-register-css{
+    
     .register-add-form{
         margin-bottom: 25px;
         .mat-mdc-card-header{

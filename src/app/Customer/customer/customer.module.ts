@@ -10,15 +10,20 @@ import { AddDispatcherComponent } from '../add-dispatcher/add-dispatcher.compone
 import { RolesComponent } from '../roles/roles.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from '../register/register.component';
+import { AddRegisterComponent } from '../add-register/add-register.component';
+import { RouterModule } from '@angular/router';
 
 
 
 @NgModule({
-    declarations: [HomeComponent,DispatcherComponent,HeroImageComponent,AddDispatcherComponent,RolesComponent,RegisterComponent],
+    declarations: [HomeComponent,DispatcherComponent,HeroImageComponent,AddDispatcherComponent,RolesComponent,RegisterComponent,
+    AddRegisterComponent
+    ],
   imports: [
     CommonModule,
     CustomerRoutingModule,
-    MaterialModule,ReactiveFormsModule,FormsModule
+    MaterialModule,ReactiveFormsModule,FormsModule,
+    RouterModule
   ],
   providers:[DispatcherService]
 })

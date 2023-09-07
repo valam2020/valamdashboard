@@ -14,7 +14,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class RolesComponent implements OnInit{
   title:string = "Roles";
   rolesData:any=[];
-  displayedColumns = ['role', 'description',"delete"];
+  displayedColumns = ['role', 'description',"roleCode","delete"];
   isAdd:boolean =true;
   dataSource!: MatTableDataSource<any>;
 
@@ -28,11 +28,13 @@ export class RolesComponent implements OnInit{
   constructor(private service:DispatcherService,private fb:FormBuilder,private dialog :MatDialog){
     this.addRole = this.fb.group({
       roleName:["",[Validators.required]],
-      roleDescription:["",[Validators.required]]
+      roleDescription:["",[Validators.required]],
+      roleCode:["",[Validators.required]]
     });
     this.editRole = this.fb.group({
       roleName:["",[Validators.required]],
-      roleDescription:["",[Validators.required]]
+      roleDescription:["",[Validators.required]],
+      roleCode:["",[Validators.required]]
     })
   }
 
@@ -64,7 +66,8 @@ export class RolesComponent implements OnInit{
 
       let roles={
         roleName:this.addRole.controls['roleName'].value,
-        roleDescription:this.addRole.controls['roleDescription'].value
+        roleDescription:this.addRole.controls['roleDescription'].value,
+        roleCode:this.addRole.controls['roleCode'].value
       }
 
       this.service.saveRole(roles).subscribe((data:any)=>{
@@ -83,6 +86,7 @@ export class RolesComponent implements OnInit{
     let roles={
       roleName:this.editRole.controls['roleName'].value,
       roleDescription:this.editRole.controls['roleDescription'].value,
+      roleCode:this.editRole.controls['roleCode'].value,
       roleId:this.selectedRoleInfo.roleId
     }
 
@@ -94,15 +98,24 @@ export class RolesComponent implements OnInit{
 }
 
   reset(){
-    this.addRole.reset();
-    this.editRole.reset();
+    this.addRole.patchValue({
+      roleName:"",
+      roleDescription:"",
+      roleCode:""
+    });
+    this.editRole.patchValue({
+      roleName:"",
+      roleDescription:"",
+      roleCode:""
+    });
   }
 
   enableEditForm(row:any){
     this.selectedRoleInfo = row;
     this.editRole.patchValue({
       roleName:row.roleName,
-      roleDescription:row.roleDescription
+      roleDescription:row.roleDescription,
+      roleCode:row.roleCode ?? ""
     });
     this.isAdd = false;
   }
@@ -111,7 +124,8 @@ export class RolesComponent implements OnInit{
   {
     this.editRole.patchValue({
       roleName:this.selectedRoleInfo.roleName,
-      roleDescription:this.selectedRoleInfo.roleDescription
+      roleDescription:this.selectedRoleInfo.roleDescription,
+      roleCode:this.selectedRoleInfo.roleCode ?? ""
     });
   }
 
@@ -141,7 +155,10 @@ export class RolesComponent implements OnInit{
 
 
   confirmDelete(){
-
+    this.service.deleteRole(this.selectedDeleteRoleInfo.roleId).subscribe((data:any)=>{
+      this.getAllRoles();
+      this.dialog.closeAll();
+    })
   }
 
 }

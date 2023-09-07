@@ -8,7 +8,13 @@ export const ApiUrls:any={
     roles:{
         all:"roles/all",
         create:"roles/create",
-        update:"roles/update"
+        update:"roles/update",
+        delete:"roles/delete"
+    },
+    customer_login:{
+        all:"customer_login/all",
+        signup:"customer_login/signup",
+        delete:"customer_login/delete"
     }
 }
 

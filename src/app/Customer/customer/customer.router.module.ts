@@ -5,6 +5,7 @@ import { HomeComponent } from '../home/home.component';
 import { DispatcherComponent } from '../dispatcher/dispatcher.component';
 import { RolesComponent } from '../roles/roles.component';
 import { RegisterComponent } from '../register/register.component';
+import { AddRegisterComponent } from '../add-register/add-register.component';
 
 const routes: Routes = [
    {
@@ -22,6 +23,10 @@ const routes: Routes = [
    {
     path:"register",
     component:RegisterComponent
+   },
+   {
+    path:"add-register",
+    component:AddRegisterComponent
    }
 ];
 

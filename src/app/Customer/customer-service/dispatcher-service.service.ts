@@ -40,5 +40,20 @@ export class DispatcherService {
     return this.httpService.post(ApiUrls.roles.update,roleModel);
    }
 
+   deleteRole(id:any):Observable<any>{
+    return this.httpService.delete(ApiUrls.roles.delete,id);
+   }
+
+  addRegister(register:any):Observable<any>{
+    return this.httpService.post(ApiUrls.customer_login.signup,register);
+  }
+
+  getAllRegister():Observable<any>{
+    return this.httpService.get(ApiUrls.customer_login.all);
+  }
+
+  deleteRegister(id:any):Observable<any>{
+    return this.httpService.delete(ApiUrls.customer_login.delete,id);
+   }
 
 }
