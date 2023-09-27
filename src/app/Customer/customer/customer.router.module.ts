@@ -6,6 +6,7 @@ import { DispatcherComponent } from '../dispatcher/dispatcher.component';
 import { RolesComponent } from '../roles/roles.component';
 import { RegisterComponent } from '../register/register.component';
 import { AddRegisterComponent } from '../add-register/add-register.component';
+import { TimesheetComponent } from '../timesheet/timesheet.component';
 
 const routes: Routes = [
    {
@@ -27,11 +28,14 @@ const routes: Routes = [
    {
     path:"add-register",
     component:AddRegisterComponent
-   }
-   ,
+   },
    {
     path:"add-register/:editObject",
     component:AddRegisterComponent
+   },
+   {
+    path:"timesheet",
+    component:TimesheetComponent
    }
 ];
 

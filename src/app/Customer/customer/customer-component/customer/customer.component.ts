@@ -38,6 +38,12 @@ export class CustomerComponent implements OnInit{
       //       }
       //     ]
     }, 
+    {
+      link_name: "Timesheet",
+      link: "/customer/dashboard/timesheet",
+      icon: "fa fa-calendar",
+      sub_menu: []
+    } 
     // {
     //   link_name: "Category",
     //   link: null,
