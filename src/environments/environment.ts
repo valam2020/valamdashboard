@@ -1,3 +1,3 @@
 export const environment:any = {
-    apiUrl:"https://valamwebapp.herokuapp.com/"
+    apiUrl:"https://valamwebuat-64802b026016.herokuapp.com/"
 };

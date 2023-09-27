@@ -12,12 +12,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from '../register/register.component';
 import { AddRegisterComponent } from '../add-register/add-register.component';
 import { RouterModule } from '@angular/router';
+import { TimesheetComponent } from '../timesheet/timesheet.component';
 
 
 
 @NgModule({
     declarations: [HomeComponent,DispatcherComponent,HeroImageComponent,AddDispatcherComponent,RolesComponent,RegisterComponent,
-    AddRegisterComponent
+    AddRegisterComponent,
+    TimesheetComponent
     ],
   imports: [
     CommonModule,
