@@ -7,6 +7,7 @@ import { RolesComponent } from '../roles/roles.component';
 import { RegisterComponent } from '../register/register.component';
 import { AddRegisterComponent } from '../add-register/add-register.component';
 import { TimesheetComponent } from '../timesheet/timesheet.component';
+import { CustomerCareExecutiveComponent } from '../customer-care-executive/customer-care-executive.component';
 
 const routes: Routes = [
    {
@@ -36,6 +37,10 @@ const routes: Routes = [
    {
     path:"timesheet",
     component:TimesheetComponent
+   },
+   {
+    path:"decline-rides",
+    component:CustomerCareExecutiveComponent
    }
 ];
 

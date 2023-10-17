@@ -13,13 +13,15 @@ import { RegisterComponent } from '../register/register.component';
 import { AddRegisterComponent } from '../add-register/add-register.component';
 import { RouterModule } from '@angular/router';
 import { TimesheetComponent } from '../timesheet/timesheet.component';
+import { CustomerCareExecutiveComponent } from '../customer-care-executive/customer-care-executive.component';
 
 
 
 @NgModule({
     declarations: [HomeComponent,DispatcherComponent,HeroImageComponent,AddDispatcherComponent,RolesComponent,RegisterComponent,
     AddRegisterComponent,
-    TimesheetComponent
+    TimesheetComponent,
+    CustomerCareExecutiveComponent
     ],
   imports: [
     CommonModule,

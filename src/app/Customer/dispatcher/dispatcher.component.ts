@@ -28,8 +28,9 @@ export class DispatcherComponent implements OnInit{
     lastName:"",
     id:""
   };
-  public addDispatcherForm: FormGroup;
+  public addDispatcherForm!: FormGroup;
   dispatcherList: any = [];
+  submitted = false;
   constructor(private dispatcherService:DispatcherService,public dialog: MatDialog, private fb:FormBuilder){
       this.addDispatcherForm = this.fb.group({
         firstName:["",[Validators.required]],
@@ -45,6 +46,8 @@ export class DispatcherComponent implements OnInit{
   ngOnInit(): void {
     this.getAllDispatchers();
   }
+  get f() { return this.addDispatcherForm.controls; }
+
 
   ngAfterViewInit() {
   }
@@ -58,6 +61,9 @@ export class DispatcherComponent implements OnInit{
       this.dataSource.sort = this.sort;
     })
   }
+
+
+
 
   openDispatcher(templateRef:any,row:any,isEdit:boolean = false){
     this.clearDispatcher();  
@@ -112,8 +118,12 @@ export class DispatcherComponent implements OnInit{
   }
 
   saveDispatcher(){
+
+    this.submitted = false;
+    console.log(this.addDispatcherForm);
     if(this.addDispatcherForm.invalid)
     {
+      this.submitted = true;
       return;
     }
 

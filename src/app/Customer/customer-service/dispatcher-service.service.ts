@@ -60,4 +60,15 @@ export class DispatcherService {
     return this.httpService.post(ApiUrls.customer_login.update,register);
   }
 
+  getAllDeclineRides():Observable<any>{
+    return this.httpService.post(ApiUrls.ride.declineRides,{});
+  }
+
+  get(url:string):Observable<any>{
+    return this.httpService.get(url);
+  }
+
+  post(url:string,body:any):Observable<any>{
+    return this.httpService.post(url,body);
+  }
 }

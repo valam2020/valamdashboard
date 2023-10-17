@@ -9,6 +9,7 @@
 
 <div class="example-container dispatcher mat-elevation-z8">
 
+
     <mat-table [dataSource]="dataSource" matSort>
   
       <!-- ID Column -->
@@ -104,15 +105,28 @@
                   <mat-form-field >
                       <input matInput placeholder="First Name" maxlength="50" formControlName="firstName" required>
                       <mat-hint align="end">{{addDispatcherForm.controls['firstName'].value.length}} / 50</mat-hint>
-                        <!-- <mat-error class="error-message" *ngIf="userDetailsForm.get('roleName').hasError(validation.type) && (userDetailsForm.get('fullname').dirty || userDetailsForm.get('fullname').touched)">{{validation.message}}</mat-error> -->
-                      <!-- </mat-error> -->
+                      <mat-error class="error-message" *ngIf="addDispatcherForm.controls['firstName'].errors">
+                       <span *ngIf="addDispatcherForm.controls['firstName'].errors.required">
+                        FirstName is Required</span></mat-error>
                     </mat-form-field>
+                    <!-- <mat-error class="error-message" *ngIf="submitted && f.firstName.errors">
+                      <span *ngIf="f.firstName.errors">FirstName is required</span>
+                    </mat-error> -->
                   </div>
 
                   <div class="col-sm-12 col-md-6">
                           <mat-form-field class="col-sm-12 col-md-6">
                               <input matInput maxlength="50" placeholder="Last Name" formControlName="lastName" required>
                               <mat-hint align="end">{{addDispatcherForm.controls['lastName'].value.length}} / 50</mat-hint>
+                              <!-- <mat-error class="error-message" *ngIf="addDispatcherForm.get('lastName').errors">
+                                <span *ngIf="addDispatcherForm.get('lastName').errors.required">
+                                 LastName is Required</span></mat-error> -->
+<!-- 
+                                 <mat-error>
+                                  <span *ngFor="let error of addDispatcherForm.get('lastName').errors | keyvalue">
+                                     {{error.key}}
+                                </span>
+                              </mat-error> -->
                               <!-- <mat-error *ngFor="let validation of validation_messages.bio">
                               <mat-error class="error-message" *ngIf="userDetailsForm.get('bio').hasError(validation.type) && (userDetailsForm.get('bio').dirty || userDetailsForm.get('bio').touched)">{{validation.message}}</mat-error>
                               </mat-error> -->
@@ -123,6 +137,9 @@
                     <mat-form-field class="col-sm-12 col-md-6">
                         <input matInput maxlength="50" placeholder="Email Id" formControlName="email" required>
                         <mat-hint align="end">{{addDispatcherForm.controls['email'].value.length}} / 50</mat-hint>
+                        <mat-error class="error-message" *ngIf="addDispatcherForm.controls['email'].errors">
+                          <span *ngIf="addDispatcherForm.controls['email'].errors.required">
+                           Email is Required</span></mat-error>
                         <!-- <mat-error *ngFor="let validation of validation_messages.bio">
                         <mat-error class="error-message" *ngIf="userDetailsForm.get('bio').hasError(validation.type) && (userDetailsForm.get('bio').dirty || userDetailsForm.get('bio').touched)">{{validation.message}}</mat-error>
                         </mat-error> -->
@@ -133,6 +150,9 @@
                     <mat-form-field class="col-sm-12 col-md-6">
                         <input matInput  maxlength="10" placeholder="Phone Number" formControlName="phNum" required>
                         <mat-hint align="end">{{addDispatcherForm.controls['phNum'].value.length}} / 10</mat-hint>
+                        <mat-error class="error-message" *ngIf="addDispatcherForm.controls['phNum'].errors">
+                          <span *ngIf="addDispatcherForm.controls['phNum'].errors.required">
+                           Phone Number is Required</span></mat-error>
                         <!-- <mat-error *ngFor="let validation of validation_messages.bio">
                         <mat-error class="error-message" *ngIf="userDetailsForm.get('bio').hasError(validation.type) && (userDetailsForm.get('bio').dirty || userDetailsForm.get('bio').touched)">{{validation.message}}</mat-error>
                         </mat-error> -->
@@ -143,6 +163,9 @@
                     <mat-form-field class="col-sm-12 col-md-6">
                         <input matInput  maxlength="20" placeholder="Register Id" formControlName="disRegId" required>
                         <mat-hint align="end">{{addDispatcherForm.controls['disRegId'].value.length}} / 20</mat-hint>
+                        <mat-error class="error-message" *ngIf="addDispatcherForm.controls['disRegId'].errors">
+                          <span *ngIf="addDispatcherForm.controls['disRegId'].errors.required">
+                           Dispatcher RegisterId is Required</span></mat-error>
                         <!-- <mat-error *ngFor="let validation of validation_messages.bio">
                         <mat-error class="error-message" *ngIf="userDetailsForm.get('bio').hasError(validation.type) && (userDetailsForm.get('bio').dirty || userDetailsForm.get('bio').touched)">{{validation.message}}</mat-error>
                         </mat-error> -->
@@ -153,6 +176,9 @@
                     <mat-form-field class="col-sm-12 col-md-6">
                         <input matInput  maxlength="5" placeholder="Pincode" formControlName="pincode" required>
                         <mat-hint align="end">{{addDispatcherForm.controls['pincode'].value.length}} / 5</mat-hint>
+                        <mat-error class="error-message" *ngIf="addDispatcherForm.controls['pincode'].errors">
+                          <span *ngIf="addDispatcherForm.controls['pincode'].errors.required">
+                           Pincode is Required</span></mat-error>
                         <!-- <mat-error *ngFor="let validation of validation_messages.bio">
                         <mat-error class="error-message" *ngIf="userDetailsForm.get('bio').hasError(validation.type) && (userDetailsForm.get('bio').dirty || userDetailsForm.get('bio').touched)">{{validation.message}}</mat-error>
                         </mat-error> -->
@@ -163,6 +189,9 @@
                     <mat-form-field class="col-sm-12 col-md-6">
                         <input matInput  maxlength="256" placeholder="Address" formControlName="address" required>
                         <mat-hint align="end">{{addDispatcherForm.controls['address'].value.length}} / 256</mat-hint>
+                        <mat-error class="error-message" *ngIf="addDispatcherForm.controls['address'].errors">
+                          <span *ngIf="addDispatcherForm.controls['address'].errors.required">
+                           Address is Required</span></mat-error>
                         <!-- <mat-error *ngFor="let validation of validation_messages.bio">
                         <mat-error class="error-message" *ngIf="userDetailsForm.get('bio').hasError(validation.type) && (userDetailsForm.get('bio').dirty || userDetailsForm.get('bio').touched)">{{validation.message}}</mat-error>
                         </mat-error> -->

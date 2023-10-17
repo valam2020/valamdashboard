@@ -19,6 +19,14 @@ export const ApiUrls:any={
     },
     timesheet:{
         all:"timehsheet/all"
+    },
+    ride:{
+        declineRides:"ride/declined_rides",
+        updateComments:"ride/updateride_comments"
+    },
+    cust_comment:{
+        add:"cust_comment/add",
+        get_ride:"cust_comment/ride/"
     }
 }
 

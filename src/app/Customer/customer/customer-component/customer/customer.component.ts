@@ -43,6 +43,12 @@ export class CustomerComponent implements OnInit{
       link: "/customer/dashboard/timesheet",
       icon: "fa fa-calendar",
       sub_menu: []
+    }, 
+    {
+      link_name: "Decline Rides",
+      link: "/customer/dashboard/decline-rides",
+      icon: "fa fa-calendar",
+      sub_menu: []
     } 
     // {
     //   link_name: "Category",

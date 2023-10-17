@@ -1,0 +1,38 @@
+
+.customer-care-css{
+    .mat-mdc-form-field {
+        display: block !important;
+    }
+
+    .delete-dailog-actions{
+        float: right;
+        .yes-css{
+            .mat-mdc-raised-button:not(:disabled) {
+                background-color: rgb(218, 218, 32);
+            }
+        }
+        .no-css{
+            margin-right:10px;
+            .mat-mdc-raised-button:not(:disabled) {
+                background-color: #ffff;
+            }
+        }
+    }
+
+   
+}
+
+
+
+.comment-date{
+    font-weight: bold;
+    font-size: 21px;
+}
+
+.comment-reason{
+    margin:20px;
+}
+
+.mat-mdc-form-field {
+    display: block !important;   
+}
