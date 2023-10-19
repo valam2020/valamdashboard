@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html',
@@ -20,36 +21,36 @@ export class CustomerComponent implements OnInit{
       icon: "fa fa-address-book",
       sub_menu: []
     }, 
-    {
-      link_name: "Roles",
-      link: "/customer/dashboard/roles",
-      icon: "fa fa-address-book",
-      sub_menu: []
-    }, 
-    {
-      link_name: "Register",
-      link: "/customer/dashboard/register",
-      icon: "fa fa-address-book",
-      sub_menu:[]
-      // sub_menu: [
-      //       {
-      //         link_name: "HTML & CSS",
-      //         link: "/customer/dashboard/add-register",
-      //       }
-      //     ]
-    }, 
-    {
-      link_name: "Timesheet",
-      link: "/customer/dashboard/timesheet",
-      icon: "fa fa-calendar",
-      sub_menu: []
-    }, 
+    // {
+    //   link_name: "Roles",
+    //   link: "/customer/dashboard/roles",
+    //   icon: "fa fa-address-book",
+    //   sub_menu: []
+    // }, 
+    // {
+    //   link_name: "Register",
+    //   link: "/customer/dashboard/register",
+    //   icon: "fa fa-address-book",
+    //   sub_menu:[]
+    // }, 
+    // {
+    //   link_name: "Timesheet",
+    //   link: "/customer/dashboard/timesheet",
+    //   icon: "fa fa-calendar",
+    //   sub_menu: []
+    // }, 
     {
       link_name: "Decline Rides",
       link: "/customer/dashboard/decline-rides",
       icon: "fa fa-calendar",
       sub_menu: []
-    } 
+    },
+    {
+      link_name: "Logout",
+      link: "/",
+      icon: "fa fa-calendar",
+      sub_menu: []
+    }  
     // {
     //   link_name: "Category",
     //   link: null,
@@ -69,7 +70,7 @@ export class CustomerComponent implements OnInit{
     // }
   ]
 
-  constructor() { }
+  constructor(public router:Router) { }
 
   ngOnInit() {
 
@@ -77,5 +78,12 @@ export class CustomerComponent implements OnInit{
 
   showSubmenu(itemEl: HTMLElement) {
     itemEl.classList.toggle("showMenu");
+  }
+
+  redirectEvent(item:any){
+    if(item.link_name == "Logout"){
+      localStorage.clear();
+      this.router.navigateByUrl('/'); 
+    }
   }
 }

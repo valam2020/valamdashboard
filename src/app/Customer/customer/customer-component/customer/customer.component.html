@@ -5,7 +5,13 @@
     <ul class="nav-links" id="nav-links">
       <li *ngFor="let item of menuSidebar" #itemEl routerLinkActive="active">
         <div *ngIf="item.sub_menu.length == 0" class="dropdown-title">
-          <a [routerLink]="[item.link]">
+          
+          <a  *ngIf="item.link_name != 'Logout'" [routerLink]="[item.link]">
+            <i [class]="item.icon"></i>
+            <!-- <mat-icon>{{item.icon}}</mat-icon> -->
+            <span class="link_name">{{item.link_name}}</span>
+          </a>
+          <a  (click)="redirectEvent(item)" *ngIf="item.link_name == 'Logout'">
             <i [class]="item.icon"></i>
             <!-- <mat-icon>{{item.icon}}</mat-icon> -->
             <span class="link_name">{{item.link_name}}</span>

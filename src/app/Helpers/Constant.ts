@@ -15,7 +15,8 @@ export const ApiUrls:any={
         all:"customer_login/all",
         signup:"customer_login/signup",
         delete:"customer_login/delete",
-        update:"customer_login/update"
+        update:"customer_login/update",
+        login:"customer_login/login"
     },
     timesheet:{
         all:"timehsheet/all"
