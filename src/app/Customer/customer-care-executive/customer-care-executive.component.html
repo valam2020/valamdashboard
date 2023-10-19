@@ -61,7 +61,7 @@
             <ng-container matColumnDef="car">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Car </mat-header-cell>
                 <mat-cell *matCellDef="let row" data-label="car"> 
-                    <button mat-raised-button color="primary">Open Car</button>
+                    <button mat-raised-button color="primary" (click)="openCar(row.carId,cartemplate)">Open Car</button>
                 </mat-cell>
             </ng-container>
             
@@ -86,6 +86,70 @@
 <ng-template #drivertemplate>
     <h1 mat-dialog-title>Driver Details </h1>
 <div mat-dialog-content>
+</div>
+</ng-template>
+
+
+<ng-template #cartemplate>
+    <h1 mat-dialog-title>Car Details </h1>
+<div mat-dialog-content>
+
+    <div class="row">
+        <div class="col-md-6 font-bold">
+            Model
+        </div>
+
+        <div class="col-md-6">
+            {{selectedCarInfo.carModel}}
+        </div>
+
+        <div class="col-md-6 font-bold">
+            Color
+        </div>
+
+        <div class="col-md-6">
+            {{selectedCarInfo.carColor}}
+        </div>
+
+        <div class="col-md-6 font-bold">
+            Registration Id
+        </div>
+        <div class="col-md-6">
+            {{selectedCarInfo.carRegisterId}}
+        </div>
+
+        <div class="col-md-6 font-bold">
+            Comfort Level
+        </div>
+        <div class="col-md-6">
+            {{selectedCarInfo.comfortLevel}}
+        </div>
+
+        <div class="col-md-6 font-bold">
+            Dispatcher Name
+        </div>
+        <div class="col-md-6">
+            {{selectedCarInfo.dispatcher.firstName}} {{selectedCarInfo.dispatcher.lastName}}
+        </div>
+
+        <div class="col-md-6 font-bold">
+            Dispatcher EmailId
+        </div>
+        <div class="col-md-6">
+            {{selectedCarInfo.dispatcher.email}} 
+        </div>
+
+        <div class="col-md-6 font-bold">
+            Dispatcher RegId
+        </div>
+        <div class="col-md-6">
+            {{selectedCarInfo.dispatcher.disRegId}} 
+        </div>
+
+        
+    </div>
+    <button mat-raised-button mat-dialog-close>Close</button>
+
 </div>
 </ng-template>
 
@@ -129,3 +193,4 @@
     </div>
   </div>
 </ng-template>
+

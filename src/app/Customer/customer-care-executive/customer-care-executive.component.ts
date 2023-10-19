@@ -22,6 +22,7 @@ export class CustomerCareExecutiveComponent implements OnInit{
   public executiveFormGroup: FormGroup;
   selectedAddComment: any={ };
   selectedCommentList: any[]=[];
+  selectedCarInfo:any= {};
   constructor(private dispatcherService:DispatcherService,public dialog: MatDialog,public fb:FormBuilder){
     this.executiveFormGroup = this.fb.group({
       comment:['',[Validators.required]],
@@ -118,5 +119,31 @@ export class CustomerCareExecutiveComponent implements OnInit{
     })
   }
 
+  openCar(carId:number,templateRef:any){
+
+    if(carId==null)
+    {
+      alert("CardId values is not found");
+      return;
+    }
+
+
+    this.dispatcherService.get(ApiUrls.car.getCar.replace("{id}",carId)).subscribe((data:any)=>{
+     console.log(data);
+     if(data){
+      this.selectedCarInfo =data;
+     let deleteDialogRef = this.dialog.open(templateRef, {
+      width: '600px',
+      disableClose: true,
+      autoFocus: false,
+      maxHeight: '90vh'
+    });
+
+        deleteDialogRef.afterClosed().subscribe(result => {
+          this.selectedCarInfo ={};
+      }); 
+    }
+    })
+  }
   
 }

@@ -28,6 +28,9 @@ export const ApiUrls:any={
     cust_comment:{
         add:"cust_comment/add",
         get_ride:"cust_comment/ride/"
+    },
+    car:{
+        getCar:"car/{id}"
     }
 }
 
