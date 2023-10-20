@@ -11,7 +11,8 @@ import { MaterialModule } from './material/material.module';
 import { CustomerComponent } from './Customer/customer/customer-component/customer/customer.component';
 import { RouterModule } from '@angular/router';
 import { HttpService } from './Helpers/services/http.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HttpClientInterceptor } from './Helpers/services/httpclient.interceptor';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { HttpClientModule } from '@angular/common/http';
   HttpClientModule,
   RouterModule
   ],
-  providers: [HttpService],
+  providers: [HttpService,  
+    { provide: HTTP_INTERCEPTORS, useClass: HttpClientInterceptor, multi: true },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -31,6 +31,9 @@ export const ApiUrls:any={
     },
     car:{
         getCar:"car/{id}"
+    },
+    driver:{
+        id:"driver/auth/{id}"
     }
 }
 

@@ -86,6 +86,50 @@
 <ng-template #drivertemplate>
     <h1 mat-dialog-title>Driver Details </h1>
 <div mat-dialog-content>
+    <div class="row">
+        <div class="col-md-6 font-bold">
+            Driver Name
+        </div>
+        <div class="col-md-6">
+            {{selectedDriverDetails.firstName}}  {{selectedDriverDetails.lastName}}
+        </div>
+        <div class="col-md-6 font-bold">
+            dlNum
+        </div>
+        <div class="col-md-6">
+            {{selectedDriverDetails.dlNum}}
+        </div>
+        <div class="col-md-6 font-bold">
+            Phone Number
+        </div>
+        <div class="col-md-6">
+            {{selectedDriverDetails.phNum}}
+        </div>
+        <div class="col-md-6 font-bold">
+            Dispatcher Name
+        </div>
+        <div class="col-md-6">
+            {{selectedDriverDetails.dispatcher.firstName}} {{selectedDriverDetails.dispatcher.lastName}}
+        </div>
+
+        <div class="col-md-6 font-bold">
+            Dispatcher EmailId
+        </div>
+        <div class="col-md-6">
+            {{selectedDriverDetails.dispatcher.email}} 
+        </div>
+
+        <div class="col-md-6 font-bold">
+            Dispatcher RegId
+        </div>
+        <div class="col-md-6">
+            {{selectedDriverDetails.dispatcher.disRegId}} 
+        </div>
+
+
+    </div>
+    
+<button mat-raised-button mat-dialog-close>Close</button>
 </div>
 </ng-template>
 
