@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddDispatcherComponent } from '../add-dispatcher/add-dispatcher.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Mesages } from 'src/app/Helpers/Constant';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -31,7 +32,7 @@ export class DispatcherComponent implements OnInit{
   public addDispatcherForm!: FormGroup;
   dispatcherList: any = [];
   submitted = false;
-  constructor(private dispatcherService:DispatcherService,public dialog: MatDialog, private fb:FormBuilder){
+  constructor(private dispatcherService:DispatcherService,public dialog: MatDialog, private fb:FormBuilder,private router:Router,private activeRoute:ActivatedRoute){
       this.addDispatcherForm = this.fb.group({
         firstName:["",[Validators.required]],
         lastName:["",[Validators.required]],
@@ -175,4 +176,11 @@ export class DispatcherComponent implements OnInit{
       disRegId:""      
     });
   }
+
+  dispatcherDashboard(dispatcher:any){
+    this.router.navigate(['customer/dashboard/dispatcher-dashboard/'+dispatcher.id])
+  }  
+  
+  
+
 }

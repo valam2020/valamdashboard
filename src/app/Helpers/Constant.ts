@@ -30,10 +30,15 @@ export const ApiUrls:any={
         get_ride:"cust_comment/ride/"
     },
     car:{
-        getCar:"car/{id}"
+        getCar:"car/{id}",
+        getCarsUnderDispatcher:"car/fetch?dispatcher_id="
     },
     driver:{
-        id:"driver/auth/{id}"
+        id:"driver/auth/{id}",
+        getAll:"driver/fetch?dispatcher_id="
+    },
+    dispatcherScheduler:{
+       getSchedulers:"dispSch/fetchByDispatcher/"
     }
 }
 

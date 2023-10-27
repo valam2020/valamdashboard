@@ -1,0 +1,26 @@
+<div class="row">
+<div class="col-md-4">
+    <mat-card class="example-card" (click)="redirectToDriver()">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>Drivers {{drivers.length}}</mat-card-title>
+        </mat-card-header>
+    </mat-card>
+</div>
+<div class="col-md-4">
+<mat-card class="example-card" (click)="redirectToCar()">
+	<mat-card-header>
+		<div mat-card-avatar class="example-header-image"></div>
+		<mat-card-title>Cars {{cars.length}}</mat-card-title>
+	</mat-card-header>
+</mat-card>
+</div>
+<div class="col-md-4">
+<mat-card class="example-card" (click)="redirectToScheduler()">
+	<mat-card-header>
+		<div mat-card-avatar class="example-header-image"></div>
+		<mat-card-title>Schdules {{schdulersDetails.length}}</mat-card-title>
+	</mat-card-header>
+</mat-card>
+</div>
+</div>

@@ -18,7 +18,7 @@ import { HttpClientInterceptor } from './Helpers/services/httpclient.interceptor
   declarations: [
     AppComponent,
     LoginComponent,
-    CustomerComponent,
+    CustomerComponent
   ],
   imports: [
     BrowserModule,

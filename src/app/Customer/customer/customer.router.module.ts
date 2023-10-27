@@ -8,6 +8,10 @@ import { RegisterComponent } from '../register/register.component';
 import { AddRegisterComponent } from '../add-register/add-register.component';
 import { TimesheetComponent } from '../timesheet/timesheet.component';
 import { CustomerCareExecutiveComponent } from '../customer-care-executive/customer-care-executive.component';
+import { DispatcherDashboardComponent } from '../dispatcher-dashboard/dispatcher-dashboard.component';
+import { DispatcherDriversComponent } from '../dispatcher-drivers/dispatcher-drivers.component';
+import { DispatcherCarsComponent } from '../dispatcher-cars/dispatcher-cars.component';
+import { DispatcherSchedulersComponent } from '../dispatcher-schedulers/dispatcher-schedulers.component';
 
 const routes: Routes = [
    {
@@ -41,6 +45,21 @@ const routes: Routes = [
    {
     path:"decline-rides",
     component:CustomerCareExecutiveComponent
+   },{
+    path:"dispatcher-dashboard/:id",
+    component:DispatcherDashboardComponent
+   },
+   {
+    path:"dispatcher-drivers/:id",
+    component:DispatcherDriversComponent
+   },
+   {
+    path:"dispatcher-cars/:id",
+    component:DispatcherCarsComponent
+   },
+   {
+    path:"dispatcher-scheduler/:id",
+    component:DispatcherSchedulersComponent
    }
 ];
 

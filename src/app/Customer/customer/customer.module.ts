@@ -14,6 +14,11 @@ import { AddRegisterComponent } from '../add-register/add-register.component';
 import { RouterModule } from '@angular/router';
 import { TimesheetComponent } from '../timesheet/timesheet.component';
 import { CustomerCareExecutiveComponent } from '../customer-care-executive/customer-care-executive.component';
+import { DispatcherDashboardComponent } from '../dispatcher-dashboard/dispatcher-dashboard.component';
+import { DispatcherBehaviourService } from '../customer-service/dispatcher-subject.service';
+import { DispatcherDriversComponent } from '../dispatcher-drivers/dispatcher-drivers.component';
+import { DispatcherCarsComponent } from '../dispatcher-cars/dispatcher-cars.component';
+import { DispatcherSchedulersComponent } from '../dispatcher-schedulers/dispatcher-schedulers.component';
 
 
 
@@ -21,7 +26,11 @@ import { CustomerCareExecutiveComponent } from '../customer-care-executive/custo
     declarations: [HomeComponent,DispatcherComponent,HeroImageComponent,AddDispatcherComponent,RolesComponent,RegisterComponent,
     AddRegisterComponent,
     TimesheetComponent,
-    CustomerCareExecutiveComponent
+    CustomerCareExecutiveComponent,
+    DispatcherDashboardComponent,
+    DispatcherDriversComponent,
+    DispatcherCarsComponent,
+    DispatcherSchedulersComponent
     ],
   imports: [
     CommonModule,
@@ -29,6 +38,6 @@ import { CustomerCareExecutiveComponent } from '../customer-care-executive/custo
     MaterialModule,ReactiveFormsModule,FormsModule,
     RouterModule
   ],
-  providers:[DispatcherService]
+  providers:[DispatcherService,DispatcherBehaviourService]
 })
 export class CustomerModule { }

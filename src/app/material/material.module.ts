@@ -36,7 +36,7 @@ const modules=[
   MatToolbarModule,
   MatPaginatorModule,
   MatDividerModule,
-  MatDialogModule
+  MatDialogModule,
 ];
 
 @NgModule({
