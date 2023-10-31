@@ -13,6 +13,8 @@ import { RouterModule } from '@angular/router';
 import { HttpService } from './Helpers/services/http.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HttpClientInterceptor } from './Helpers/services/httpclient.interceptor';
+import { AuthService } from './Helpers/services/auth.service';
+import { AuthGuardService } from './Helpers/services/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { HttpClientInterceptor } from './Helpers/services/httpclient.interceptor
   RouterModule
   ],
   providers: [HttpService,  
-    { provide: HTTP_INTERCEPTORS, useClass: HttpClientInterceptor, multi: true },],
+    { provide: HTTP_INTERCEPTORS, useClass: HttpClientInterceptor, multi: true },  AuthService,
+    AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -46,7 +46,7 @@ const routes: Routes = [
     path:"decline-rides",
     component:CustomerCareExecutiveComponent
    },{
-    path:"dispatcher-dashboard/:id",
+    path:"dispatcher-dashboard/:id/:name",
     component:DispatcherDashboardComponent
    },
    {
@@ -58,7 +58,7 @@ const routes: Routes = [
     component:DispatcherCarsComponent
    },
    {
-    path:"dispatcher-scheduler/:id",
+    path:"dispatcher-scheduler/:id/:name",
     component:DispatcherSchedulersComponent
    }
 ];

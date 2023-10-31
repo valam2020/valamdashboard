@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { CustomerComponent } from './Customer/customer/customer-component/customer/customer.component';
 import { CustomerModule } from './Customer/customer/customer.module';
+import { AuthGuardService } from './Helpers/services/auth-guard.service';
 
 const routes: Routes = [
 {
@@ -12,7 +13,7 @@ const routes: Routes = [
 {
   path: 'customer',
   component: CustomerComponent,
-  //  canActivate:[AuthGuard],
+  canActivate: [AuthGuardService],
   children: [
     {path: 'dashboard', 
     loadChildren: () => import('./Customer/customer/customer.module').then(x => x.CustomerModule)

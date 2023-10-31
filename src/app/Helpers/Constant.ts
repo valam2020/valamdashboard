@@ -23,7 +23,8 @@ export const ApiUrls:any={
     },
     ride:{
         declineRides:"ride/declined_rides",
-        updateComments:"ride/updateride_comments"
+        updateComments:"ride/updateride_comments",
+        dispatcherScheduler:"ride/dispatcher/"
     },
     cust_comment:{
         add:"cust_comment/add",

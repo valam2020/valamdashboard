@@ -178,7 +178,8 @@ export class DispatcherComponent implements OnInit{
   }
 
   dispatcherDashboard(dispatcher:any){
-    this.router.navigate(['customer/dashboard/dispatcher-dashboard/'+dispatcher.id])
+    const dispatcherName = dispatcher.firstName+" "+dispatcher.lastName;
+    this.router.navigate(['customer/dashboard/dispatcher-dashboard/'+dispatcher.id+'/'+dispatcherName])
   }  
   
   

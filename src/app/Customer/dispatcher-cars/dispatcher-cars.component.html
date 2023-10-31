@@ -1,1 +1,51 @@
-<p>dispatcher-cars works!</p>
+<div class="dispatcher-drivers-css">
+
+    <div class="dispatcher-hero-image">
+        <app-hero-image [title]="title"></app-hero-image>
+    </div>
+
+    <div class="example-container dispatcher mat-elevation-z8">
+
+
+        <mat-table [dataSource]="dataSource" matSort>
+      
+
+          <!-- driverName Column -->
+          <ng-container matColumnDef="carRegisterId">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Registartion Id </mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="driverName"> {{row.carRegisterId}} </mat-cell>
+          </ng-container>
+      
+          <!-- comfortLevel Column -->
+          <ng-container matColumnDef="comfortLevel">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Comfort Level </mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="comfortLevel"> {{row.comfortLevel}} </mat-cell>
+          </ng-container>
+      
+    
+            <!-- carColor Column -->
+            <ng-container matColumnDef="carColor">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Color </mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="carColor"> {{row.carColor}} </mat-cell>
+            </ng-container>
+    
+            <!-- carModel Column -->
+            <ng-container matColumnDef="carModel">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Model </mat-header-cell>
+                <mat-cell *matCellDef="let row" data-label="carModel"> {{row.carModel}} </mat-cell>
+            </ng-container>        
+    
+            <!-- createdDate Column -->
+            <ng-container matColumnDef="createdDate">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Created Date </mat-header-cell>
+                <mat-cell *matCellDef="let row" data-label="createdDate"> {{row.createdDate}} </mat-cell>
+            </ng-container>         
+       
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;">
+          </mat-row>
+        </mat-table>
+      
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+      </div>
+</div>

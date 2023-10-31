@@ -15,6 +15,7 @@ export class DispatcherDashboardComponent implements OnInit{
   drivers: any = [];
   cars: any = [];
   schdulersDetails: any = [];
+  dispatcherName: string = "";
   constructor(private activeRoute:ActivatedRoute,private router:Router,private service:DispatcherService,private dispatcherBehaviourService:DispatcherBehaviourService){
 
   }
@@ -22,6 +23,7 @@ export class DispatcherDashboardComponent implements OnInit{
   ngOnInit(): void {
     this.activeRoute.params.subscribe((data:any)=>{
         this.dispatcherId = data.id;
+        this.dispatcherName =data.name;
     });
     this.getAllDriversUnderDispatcher();
     this.getAllCarsUnderDispatcher();
@@ -43,7 +45,8 @@ export class DispatcherDashboardComponent implements OnInit{
   }
 
   getAllScheduler(){
-    this.service.get(ApiUrls.dispatcherScheduler.getSchedulers+this.dispatcherId).subscribe((data:any)=>{
+    this.service.get(ApiUrls.ride.dispatcherScheduler+this.dispatcherId).subscribe((data:any)=>{
+      console.log(data)
       this.schdulersDetails = data;
       this.dispatcherBehaviourService.insertScheduler(this.schdulersDetails);
     })
@@ -58,6 +61,6 @@ export class DispatcherDashboardComponent implements OnInit{
   }
 
   redirectToScheduler(){
-    this.router.navigate(['customer/dashboard/dispatcher-scheduler/'+this.dispatcherId]);
+    this.router.navigate(['customer/dashboard/dispatcher-scheduler/'+this.dispatcherId+"/"+this.dispatcherName]);
   }
 }
