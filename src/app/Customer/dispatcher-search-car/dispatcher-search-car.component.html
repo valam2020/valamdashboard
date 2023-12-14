@@ -1,0 +1,109 @@
+<div class="dispatcher-search-cars">
+    <div class="dispatcher-hero-image">
+         <app-hero-image [title]="title"></app-hero-image>
+     </div>
+
+
+     <div class="row">
+        <div class="col-md-4">
+          <mat-form-field class="select-input-field">
+              <mat-select [(value)]="selectedDispatcher" placeholder="Dispatcher">
+                <mat-option [value]="">None</mat-option>
+                <mat-option *ngFor="let disp of dispatcherList" [value]="disp.id">{{disp.firstName}} {{disp.lastName}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-md-6 buttons-list">
+          <div class="row delete-dailog-actions">
+          <div class="col-md-5 no-css">
+              <button mat-raised-button (click)="clear()">Clear</button>
+          </div>
+          <div class="col-md-4 yes-css">
+              <button mat-raised-button class="confirm-css" color="accent" (click)="searchCars()">Search</button>
+          </div>
+        </div>
+        </div>
+      </div>
+  
+      <div *ngIf="isSelectedDrivers">
+        <div class="icon-button-container">
+          <button mat-fab color="primary" aria-label="Example icon button with a delete icon" (click)="openAddCarDailog(addCarDailog)">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+      </div>
+  
+  
+      <div id="driver-information"  class="dispatcher-drivers-custom-css"  *ngIf="isSelectedDrivers">
+        <app-dispatcher-cars [dispatcherId]="dispatcherIdForDrivers" [selectedDispatcherDetails]="selectedDriverDetails" [openDriverCars]="true"/>
+    </div>
+</div>     
+
+
+<ng-template #addCarDailog>
+    <h1 mat-dialog-title>Add Car </h1>
+    <div mat-dialog-content>
+        <form [formGroup]="addCar">
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field >
+                        <input matInput placeholder="Car Model" maxlength="50" formControlName="carModel" required>
+                        <mat-hint align="end">{{addCar.controls['carModel'].value.length}} / 50</mat-hint>
+                        <mat-error class="error-message" *ngIf="addCar.controls['carModel'].errors">
+                         <span *ngIf="addCar.controls['carModel'].errors.required">
+                            Car Model is Required</span></mat-error>
+                      </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field >
+                        <input matInput placeholder="Car Color" maxlength="50" formControlName="carColor" required>
+                        <mat-hint align="end">{{addCar.controls['carColor'].value.length}} / 50</mat-hint>
+                        <mat-error class="error-message" *ngIf="addCar.controls['carColor'].errors">
+                         <span *ngIf="addCar.controls['carColor'].errors.required">
+                            Car Color is Required</span></mat-error>
+                      </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field >
+                        <input matInput placeholder="Taxi Id" maxlength="50" formControlName="carRegisterId" required>
+                        <mat-hint align="end">{{addCar.controls['carRegisterId'].value.length}} / 50</mat-hint>
+                        <mat-error class="error-message" *ngIf="addCar.controls['carRegisterId'].errors">
+                         <span *ngIf="addCar.controls['carRegisterId'].errors.required">
+                            Taxi Id is Required</span></mat-error>
+                      </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field >
+                        <input matInput placeholder="Taxi Id" maxlength="50" formControlName="carRegisterId" required>
+                        <mat-hint align="end">{{addCar.controls['carRegisterId'].value.length}} / 50</mat-hint>
+                        <mat-error class="error-message" *ngIf="addCar.controls['carRegisterId'].errors">
+                         <span *ngIf="addCar.controls['carRegisterId'].errors.required">
+                            Taxi Id is Required</span></mat-error>
+                      </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field class="select-input-field">
+                        <mat-select formControlName="carType" placeholder="Car Seating Type">
+                          <mat-option [value]="">None</mat-option>
+                          <mat-option *ngFor="let c of carComfortList" [value]="c.id">{{c.comfortLevel}} - {{c.seatCapacity}}</mat-option>
+                        </mat-select>
+                        <mat-error class="error-message" *ngIf="addCar.controls['carType'].errors">
+                            <span *ngIf="addCar.controls['carType'].errors.required">
+                                Car Seating Type is Required</span></mat-error>
+                      </mat-form-field>
+                </div>
+                
+
+            </div>
+            <div mat-dialog-actions class="delete-dailog-actions">
+                <div class="no-css">
+                    <button mat-raised-button mat-dialog-close>Cancel</button>
+                </div>
+                <div class="yes-css">
+                    <button mat-raised-button class="confirm-css"  color="accent">Submit</button>
+                </div>
+              </div>
+
+        </form>
+    </div>
+</ng-template>

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { DispatcherBehaviourService } from '../customer-service/dispatcher-subject.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
@@ -20,8 +20,9 @@ export class DispatcherDriversComponent implements OnInit{
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   title:string = "";
-  dispatcherId:number = 0;
-
+  @Input() dispatcherId:number = 0;
+  @Input() openDriverCars:boolean = false;
+  @Input() selectedDriverDetails:any;
   constructor(private dispatcherBehaviourSubject:DispatcherBehaviourService, private activeRoute:ActivatedRoute,private service:DispatcherService){
     this.activeRoute.params.subscribe((data:any)=>{
       this.dispatcherId = data.id;
@@ -29,14 +30,23 @@ export class DispatcherDriversComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.dispatcherBehaviourSubject.driverObservable.subscribe((data:any)=>{
-      if(data && data.length>0){
-        this.filterDriverData(data);
-      }
-      else{
-        this.getAllDriversUnderDispatcher();
-      }
-    });
+    
+  }
+
+  ngOnChanges(){
+    if(!this.openDriverCars){
+        this.dispatcherBehaviourSubject.driverObservable.subscribe((data:any)=>{
+          if(data && data.length>0){
+            this.filterDriverData(data);
+          }
+          else{
+            this.getAllDriversUnderDispatcher();
+          }
+        });
+    }
+    else{
+      this.getAllDriversUnderDispatcher();
+    }
   }
 
   getAllDriversUnderDispatcher(){
@@ -48,7 +58,13 @@ export class DispatcherDriversComponent implements OnInit{
 
   filterDriverData(data:any){
     this.driversList = data;
-    this.title = (data.length>0)?data[0].dispatcher.firstName+ " " +data[0].dispatcher.lastName+"'s Drivers":"";
+    if(!this.openDriverCars)
+    {
+      this.title = (data.length>0)?data[0].dispatcher.firstName+ " " +data[0].dispatcher.lastName+"'s Drivers":"";
+    }
+    else{
+      this.title = this.selectedDriverDetails.firstName+ " "+this.selectedDriverDetails.lastName+"'s Drivers";
+    }
     this.dataSource =new MatTableDataSource(this.driversList);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;

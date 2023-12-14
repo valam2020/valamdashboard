@@ -13,6 +13,8 @@ import { MatOptionModule } from '@angular/material/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatDividerModule} from '@angular/material/divider';
 import { MatDialogModule} from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const modules=[
   CommonModule,
@@ -24,9 +26,7 @@ const modules=[
   MatButtonModule,
   MatTableModule,
   MatSlideToggleModule,
-  MatSelectModule,
   MatOptionModule,
-  MatButtonModule,
   MatCardModule,
   MatInputModule,
   MatMenuModule,
@@ -37,6 +37,8 @@ const modules=[
   MatPaginatorModule,
   MatDividerModule,
   MatDialogModule,
+  MatFormFieldModule,
+  MatSnackBarModule
 ];
 
 @NgModule({

@@ -1,0 +1,70 @@
+<div class="dispatcher-search-drivers">
+    <div class="dispatcher-hero-image">
+         <app-hero-image [title]="title"></app-hero-image>
+     </div>
+ 
+
+     <div class="row">
+      <div class="col-md-4">
+        <mat-form-field class="select-input-field">
+            <mat-select [(value)]="selectedDispatcher" placeholder="Dispatcher">
+              <mat-option [value]="">None</mat-option>
+              <mat-option *ngFor="let disp of dispatcherList" [value]="disp.id">{{disp.firstName}} {{disp.lastName}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+      </div>
+      <div class="col-md-6 buttons-list">
+        <div class="row delete-dailog-actions">
+        <div class="col-md-5 no-css">
+            <button mat-raised-button (click)="clear()">Clear</button>
+        </div>
+        <div class="col-md-4 yes-css">
+            <button mat-raised-button class="confirm-css" color="accent" (click)="searchDrivers()">Search</button>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <div *ngIf="isSelectedDrivers">
+      <div class="icon-button-container">
+        <button mat-fab color="primary" aria-label="Example icon button with a delete icon" (click)="openMapDriver(mapDriverToDispatcher,selectedDispatcher)">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+    </div>
+
+
+
+
+    <div id="driver-information"  class="dispatcher-drivers-custom-css"  *ngIf="isSelectedDrivers">
+        <app-dispatcher-drivers [dispatcherId]="dispatcherIdForDrivers" [selectedDriverDetails]="selectedDriverDetails" [openDriverCars]="true"/>
+    </div>
+  </div>
+
+  <ng-template #mapDriverToDispatcher>
+    <h1 mat-dialog-title>Map Driver To Dispatcher </h1>
+    <div mat-dialog-content>
+      <form [formGroup]="mapDriver">
+        <div class="row">
+        <mat-form-field class="select-input-field">
+            <mat-select formControlName="driverId" placeholder="Driver">
+              <mat-option [value]="">Select Driver</mat-option>
+              <mat-option *ngFor="let op of driverDetailsWithoutDispatcher" [value]="op.id">
+                {{op.firstName}} - {{op.lastName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div mat-dialog-actions class="delete-dailog-actions">
+          <div class="no-css">
+              <button mat-raised-button mat-dialog-close>Cancel</button>
+          </div>
+          <div class="yes-css">
+              <button mat-raised-button class="confirm-css"  color="accent" (click)="saveMapDriverToDispatcher()">Submit</button>
+          </div>
+        </div>
+      </form>
+
+    </div>  
+
+  </ng-template>

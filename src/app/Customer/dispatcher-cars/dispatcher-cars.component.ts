@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { DispatcherBehaviourService } from '../customer-service/dispatcher-subject.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
@@ -20,23 +20,32 @@ export class DispatcherCarsComponent implements OnInit{
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   title:string = "";
-  dispatcherId:number = 0;
-
+  @Input() dispatcherId:number = 0;
+  @Input() openDriverCars:boolean = false;
+  @Input() selectedDispatcherDetails:any;
+  
   constructor(private dispatcherBehaviourSubject:DispatcherBehaviourService,private service:DispatcherService,private activeRoute:ActivatedRoute){
     this.activeRoute.params.subscribe((data:any)=>{
       this.dispatcherId = data.id;
     });
   }
-
   ngOnInit(): void {
-    this.dispatcherBehaviourSubject.carsObservable.subscribe((data:any)=>{
-      if(data && data.length>0){
-        this.filterDriverData(data);
-      }
-      else{
-        this.getAllCarsUnderDispatcher();
-      }
-    });
+  }
+
+  ngOnChanges(): void {
+    if(!this.openDriverCars){
+      this.dispatcherBehaviourSubject.carsObservable.subscribe((data:any)=>{
+        if(data && data.length>0){
+          this.filterDriverData(data);
+        }
+        else{
+          this.getAllCarsUnderDispatcher();
+        }
+      });
+    }
+    else{
+      this.getAllCarsUnderDispatcher();
+    }
   }
 
   getAllCarsUnderDispatcher(){
@@ -49,7 +58,14 @@ export class DispatcherCarsComponent implements OnInit{
 
   filterDriverData(data:any){
     this.carsList = data;
-    this.title = (data.length>0)?data[0].dispatcher.firstName+ " " +data[0].dispatcher.lastName+"'s Cars":"";
+
+    if(!this.openDriverCars)
+    {
+      this.title = (data.length>0)?data[0].dispatcher.firstName+ " " +data[0].dispatcher.lastName+"'s Cars":"";
+    }
+    else{
+      this.title = this.selectedDispatcherDetails.firstName+ " "+this.selectedDispatcherDetails.lastName+"'s Cars";
+    }
     this.dataSource =new MatTableDataSource(this.carsList);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;

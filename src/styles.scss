@@ -43,3 +43,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     pointer-events: auto;  
   }
 
+
+  .mat-mdc-form-field {
+    display: flex !important;
+}
+
+
+.mat-mdc-dialog-container .mdc-dialog__title
+{
+    background-color: rgb(218, 218, 32);
+}

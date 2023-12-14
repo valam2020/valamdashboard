@@ -46,6 +46,18 @@ export class CustomerComponent implements OnInit{
       sub_menu: []
     },
     {
+      link_name: "Dispatcher Drivers",
+      link: "/customer/dashboard/dispatcher-search-driver",
+      icon: "fa fa-calendar",
+      sub_menu: []
+    },
+    {
+      link_name: "Dispatcher Cars",
+      link: "/customer/dashboard/dispatcher-search-car",
+      icon: "fa fa-calendar",
+      sub_menu: []
+    },
+    {
       link_name: "Logout",
       link: "/",
       icon: "fa fa-calendar",

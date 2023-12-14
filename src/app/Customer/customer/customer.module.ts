@@ -19,6 +19,8 @@ import { DispatcherBehaviourService } from '../customer-service/dispatcher-subje
 import { DispatcherDriversComponent } from '../dispatcher-drivers/dispatcher-drivers.component';
 import { DispatcherCarsComponent } from '../dispatcher-cars/dispatcher-cars.component';
 import { DispatcherSchedulersComponent } from '../dispatcher-schedulers/dispatcher-schedulers.component';
+import { DispatcherSearchDriverComponent } from '../dispatcher-search-driver/dispatcher-search-driver.component';
+import { DispatcherSearchCarComponent } from '../dispatcher-search-car/dispatcher-search-car.component';
 
 
 
@@ -30,7 +32,9 @@ import { DispatcherSchedulersComponent } from '../dispatcher-schedulers/dispatch
     DispatcherDashboardComponent,
     DispatcherDriversComponent,
     DispatcherCarsComponent,
-    DispatcherSchedulersComponent
+    DispatcherSchedulersComponent,
+    DispatcherSearchDriverComponent,
+    DispatcherSearchCarComponent,
     ],
   imports: [
     CommonModule,

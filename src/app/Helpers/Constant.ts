@@ -32,15 +32,18 @@ export const ApiUrls:any={
     },
     car:{
         getCar:"car/{id}",
-        getCarsUnderDispatcher:"car/fetch?dispatcher_id="
+        getCarsUnderDispatcher:"car/fetch?dispatcher_id=",
+        carComfortList:'car/carsList',
     },
     driver:{
         id:"driver/auth/{id}",
-        getAll:"driver/fetch?dispatcher_id="
+        getAll:"driver/fetch?dispatcher_id=",
+        UpdateDispatcherDriver:'driver/updatedispId',
     },
     dispatcherScheduler:{
        getSchedulers:"dispSch/fetchByDispatcher/"
-    }
+    },
+    defaultDispatcherValue:1
 }
 
 export const Mesages={

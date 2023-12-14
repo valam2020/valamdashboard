@@ -2,13 +2,16 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiUrls } from 'src/app/Helpers/Constant';
 import { HttpService } from 'src/app/Helpers/services/http.service';
-
+import {
+  MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
 @Injectable({
   providedIn: 'root'
 })
 export class DispatcherService {
-
-  constructor(private httpService:HttpService) {
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
+  constructor(private httpService:HttpService,private snackBar:MatSnackBar) {
 
    }
 
@@ -70,5 +73,13 @@ export class DispatcherService {
 
   post(url:string,body:any):Observable<any>{
     return this.httpService.post(url,body);
+  }
+
+  openSnackBar(message:any){
+    this.snackBar.open(message, 'Close', {
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+      duration:1000
+    });
   }
 }

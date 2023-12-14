@@ -135,7 +135,8 @@ export class DispatcherComponent implements OnInit{
       this.dataSource =new MatTableDataSource(this.dispatcherList);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;      
-      this.dialog.closeAll()
+      this.dialog.closeAll();
+      this.dispatcherService.openSnackBar("Added Successfully new dispatcher!!!");
     })
   }
 
