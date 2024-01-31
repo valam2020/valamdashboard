@@ -9,18 +9,26 @@
     <form [formGroup]="loginForm">
         <p>
           <mat-form-field>
-            <input type="text" matInput placeholder="Username" formControlName="userName">
+            <input type="text" matInput placeholder="User Name" formControlName="userName">
           </mat-form-field>
+          <mat-error *ngIf="submit && f.userName.invalid">Please enter User Name</mat-error>
+
         </p>
 
         <p>
           <mat-form-field>
             <input type="password" matInput placeholder="Password" formControlName="password">
           </mat-form-field>
+          <mat-error *ngIf="submit && f.password.invalid">Please enter Password</mat-error>
+
         </p>
 
         <div class="warn-button">
-            <button mat-raised-button color="warn" (click)="submitLoginForm()">Sign In</button>
+            <button mat-raised-button color="warn" (click)="submitLoginForm()">
+              <mat-icon *ngIf="loaderSubmit" class="mr-10"><mat-spinner color="primary" diameter="20">
+              </mat-spinner></mat-icon>
+              <span class="sign-in-margin-left">Sign In</span>
+            </button>
         </div>
 
       </form>

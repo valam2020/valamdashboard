@@ -24,7 +24,10 @@ export const ApiUrls:any={
     ride:{
         declineRides:"ride/declined_rides",
         updateComments:"ride/updateride_comments",
-        dispatcherScheduler:"ride/dispatcher/"
+        dispatcherScheduler:"ride/dispatcher/",
+    },
+    scheduler:{
+        dispatcherSchedulerFecth:"dispSch/fetch"
     },
     cust_comment:{
         add:"cust_comment/add",
@@ -34,6 +37,10 @@ export const ApiUrls:any={
         getCar:"car/{id}",
         getCarsUnderDispatcher:"car/fetch?dispatcher_id=",
         carComfortList:'car/carsList',
+        AddCar:'car/add' ,
+        GetCarDetails:'car/Cars',
+        UpdateCarDetails:'car/update',
+        DeleteCarData:'car/delete'
     },
     driver:{
         id:"driver/auth/{id}",

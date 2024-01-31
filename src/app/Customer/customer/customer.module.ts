@@ -21,6 +21,7 @@ import { DispatcherCarsComponent } from '../dispatcher-cars/dispatcher-cars.comp
 import { DispatcherSchedulersComponent } from '../dispatcher-schedulers/dispatcher-schedulers.component';
 import { DispatcherSearchDriverComponent } from '../dispatcher-search-driver/dispatcher-search-driver.component';
 import { DispatcherSearchCarComponent } from '../dispatcher-search-car/dispatcher-search-car.component';
+import { DispatcherSearchSchedulerComponent } from '../dispatcher-search-scheduler/dispatcher-search-scheduler.component';
 
 
 
@@ -35,6 +36,7 @@ import { DispatcherSearchCarComponent } from '../dispatcher-search-car/dispatche
     DispatcherSchedulersComponent,
     DispatcherSearchDriverComponent,
     DispatcherSearchCarComponent,
+    DispatcherSearchSchedulerComponent
     ],
   imports: [
     CommonModule,

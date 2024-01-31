@@ -15,6 +15,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import { MatDialogModule} from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 const modules=[
   CommonModule,
@@ -38,7 +39,8 @@ const modules=[
   MatDividerModule,
   MatDialogModule,
   MatFormFieldModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatProgressSpinnerModule
 ];
 
 @NgModule({

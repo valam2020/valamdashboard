@@ -18,10 +18,10 @@ export class DispatcherSearchCarComponent implements OnInit{
   selectedDriverDetails: any;
   dispatcherList:any=[];
   carComfortList:any=[];
-  addCar:FormGroup | any;
+  addCarForm:FormGroup | any;
 
   constructor(private dispatcherService:DispatcherService,private fb:FormBuilder,public dialog: MatDialog){
-    this.addCar = this.fb.group({
+    this.addCarForm = this.fb.group({
       id:[],
       carModel: ['', Validators.required],
       carColor: ['', Validators.required],
@@ -61,10 +61,47 @@ export class DispatcherSearchCarComponent implements OnInit{
     });
   }
 
-  openAddCarDailog(templateRef:any)
+  openaddCarFormDailog(templateRef:any)
   {
     const dialogRef = this.dialog.open(templateRef,{
       width: '800px',disableClose: true 
     });
   }
+
+  addCarFormUnderDispatcher(){
+    if(this.addCarForm.invalid)
+    {
+    //  this.submitted = true;
+      return;
+    }
+    else{
+      let comfortLevelDetails= this.carComfortList.filter((s:any)=>{return (s.id==this.addCarForm.value.carType)})[0];
+      let carDetails ={
+       carModel:this.addCarForm.value.carModel,
+       carColor:this.addCarForm.value.carColor,
+       carRegisterId:this.addCarForm.value.carRegisterId,
+       comfortLevel:comfortLevelDetails.comfortLevel,
+       dispatcherId: this.dispatcherIdForDrivers,
+       carStatus:"Available",
+       _driver_assigned:false,
+       stsId:13 ,
+       carType: this.addCarForm.value.carType,      
+      };
+    this.dispatcherService.post(ApiUrls.car.AddCar,carDetails).subscribe((data:any)=>{
+      if(data){
+        this.isSelectedDrivers=false;
+        this.addCarForm.patchValue({
+          carModel:"",
+          carColor: "",
+          carRegisterId:"",
+          carType:"",
+        });
+        this.dispatcherService.openSnackBar("Car Added Successfully!!!");
+        this.dialog.closeAll();
+        this.searchCars();
+      }
+    })
+
+  }
+}
 }

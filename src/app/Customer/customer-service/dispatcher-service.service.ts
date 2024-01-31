@@ -82,4 +82,13 @@ export class DispatcherService {
       duration:1000
     });
   }
+
+  errorSnackBar(message:any){
+    this.snackBar.open(message, 'Close', {
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+      duration:1000,
+      panelClass:['error-snackbar']
+    });
+  }
 }

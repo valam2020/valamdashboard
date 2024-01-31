@@ -1,0 +1,72 @@
+<div class="dispatcher-search-scheduler">
+    <div class="dispatcher-hero-image">
+         <app-hero-image [title]="title"></app-hero-image>
+     </div>
+
+     <div class="row">
+        <div class="col-md-4">
+          <mat-form-field class="select-input-field">
+              <mat-select [(value)]="selectedDispatcher" placeholder="Dispatcher">
+                <mat-option [value]="">None</mat-option>
+                <mat-option *ngFor="let disp of dispatcherList" [value]="disp.id">{{disp.firstName}} {{disp.lastName}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-md-6 buttons-list">
+          <div class="row delete-dailog-actions">
+          <div class="col-md-5 no-css">
+              <button mat-raised-button (click)="clear()">Clear</button>
+          </div>
+          <div class="col-md-4 yes-css">
+              <button mat-raised-button class="confirm-css" color="accent" (click)="getSchedulerDetails()">Search</button>
+          </div>
+        </div>
+        </div>
+      </div>
+
+      <div class="example-container dispatcher mat-elevation-z8">
+
+
+        <mat-table [dataSource]="dataSource" matSort>
+      
+
+          <!-- beginTime Column -->
+          <ng-container matColumnDef="beginTime">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Begin Time </mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="beginTime"> {{row.beginTime | date:"YYYY-MM-dd h:mm a" }} </mat-cell>
+          </ng-container>
+      
+          <!-- endTime Column -->
+          <ng-container matColumnDef="endTime">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> End Time </mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="endTime"> {{row.endTime | date:"YYYY-MM-dd h:mm a"}} </mat-cell>
+          </ng-container>
+      
+    
+            <!-- driverName Column -->
+            <ng-container matColumnDef="driverName">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Driver </mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="driverName"> {{row.driver.firstName}} {{row.driver.lastName}}</mat-cell>
+            </ng-container>
+    
+            <!-- carModel Column -->
+            <ng-container matColumnDef="carName">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Car </mat-header-cell>
+                <mat-cell *matCellDef="let row" data-label="carName"> {{row.carDetails.carModel}} </mat-cell>
+            </ng-container>        
+    
+            <!-- createdDate Column -->
+            <ng-container matColumnDef="actions">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>  </mat-header-cell>
+                <mat-cell *matCellDef="let row" data-label="actions">  </mat-cell>
+            </ng-container>         
+       
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;">
+          </mat-row>
+        </mat-table>
+      
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+      </div>
+  
+</div>

@@ -14,6 +14,7 @@ import { DispatcherCarsComponent } from '../dispatcher-cars/dispatcher-cars.comp
 import { DispatcherSchedulersComponent } from '../dispatcher-schedulers/dispatcher-schedulers.component';
 import { DispatcherSearchDriverComponent } from '../dispatcher-search-driver/dispatcher-search-driver.component';
 import { DispatcherSearchCarComponent } from '../dispatcher-search-car/dispatcher-search-car.component';
+import { DispatcherSearchSchedulerComponent } from '../dispatcher-search-scheduler/dispatcher-search-scheduler.component';
 
 const routes: Routes = [
    {
@@ -72,6 +73,11 @@ const routes: Routes = [
    {
     path:"dispatcher-search-car",
     component:DispatcherSearchCarComponent
+   }
+   ,
+   {
+    path:"dispatcher-search-scheduler",
+    component:DispatcherSearchSchedulerComponent
    }
 ];
 

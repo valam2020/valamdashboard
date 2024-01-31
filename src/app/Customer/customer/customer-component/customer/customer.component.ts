@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,
+  computed,
+  effect,
+  signal,OnInit } from '@angular/core';
+
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-customer',
@@ -54,6 +58,12 @@ export class CustomerComponent implements OnInit{
     {
       link_name: "Dispatcher Cars",
       link: "/customer/dashboard/dispatcher-search-car",
+      icon: "fa fa-calendar",
+      sub_menu: []
+    },
+    {
+      link_name: "Dispatcher Schedulers",
+      link: "/customer/dashboard/dispatcher-search-scheduler",
       icon: "fa fa-calendar",
       sub_menu: []
     },
