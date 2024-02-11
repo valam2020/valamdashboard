@@ -23,4 +23,9 @@ export class HttpService {
       return this.httpClient.post<any>(environment.apiUrl+url,model);
   }
 
+  put(url:string,model:any)
+  {
+      return this.httpClient.put<any>(environment.apiUrl+url,model);
+  }
+
 }

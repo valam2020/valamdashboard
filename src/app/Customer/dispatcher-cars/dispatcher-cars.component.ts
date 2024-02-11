@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import { DispatcherBehaviourService } from '../customer-service/dispatcher-subject.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
@@ -15,7 +15,7 @@ import { ActivatedRoute } from '@angular/router';
 export class DispatcherCarsComponent implements OnInit{
 
   carsList:any = [];
-  displayedColumns = ['carRegisterId','comfortLevel','carColor','carModel','createdDate'];
+  displayedColumns = ['carRegisterId','comfortLevel','carColor','carModel','createdDate','actions'];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -23,7 +23,8 @@ export class DispatcherCarsComponent implements OnInit{
   @Input() dispatcherId:number = 0;
   @Input() openDriverCars:boolean = false;
   @Input() selectedDispatcherDetails:any;
-  
+  @Output() openCarDailogEvent = new EventEmitter<any>();
+  @Output() openDeleteCarDailogEvent =new EventEmitter<any>();
   constructor(private dispatcherBehaviourSubject:DispatcherBehaviourService,private service:DispatcherService,private activeRoute:ActivatedRoute){
     this.activeRoute.params.subscribe((data:any)=>{
       this.dispatcherId = data.id;
@@ -48,17 +49,19 @@ export class DispatcherCarsComponent implements OnInit{
     }
   }
 
+  
+
   getAllCarsUnderDispatcher(){
     this.service.get(ApiUrls.car.getCarsUnderDispatcher+this.dispatcherId).subscribe((data:any)=>{
       this.filterDriverData(data);
-      this.dispatcherBehaviourSubject.insertCars(data );
+      this.dispatcherBehaviourSubject.insertCars(data);
     })
   }
 
 
   filterDriverData(data:any){
     this.carsList = data;
-
+    this.dataSource =new MatTableDataSource();
     if(!this.openDriverCars)
     {
       this.title = (data.length>0)?data[0].dispatcher.firstName+ " " +data[0].dispatcher.lastName+"'s Cars":"";
@@ -71,5 +74,17 @@ export class DispatcherCarsComponent implements OnInit{
     this.dataSource.sort = this.sort;
   }
 
+  openCarDailog(carDetails:any){
+    this.openCarDailogEvent.emit(carDetails);
+  }
+
+  openDeleteCarDailog(carDetails:any){
+    this.openDeleteCarDailogEvent.emit(carDetails);
+
+  }
+
+  ngOnDestroy(){
+    console.log("Destroy");
+  }
 
 }

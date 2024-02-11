@@ -40,7 +40,7 @@ export const ApiUrls:any={
         AddCar:'car/add' ,
         GetCarDetails:'car/Cars',
         UpdateCarDetails:'car/update',
-        DeleteCarData:'car/delete'
+        DeleteCarData:'car/delete',
     },
     driver:{
         id:"driver/auth/{id}",

@@ -64,12 +64,15 @@
         <!-- phonenumber Column -->
         <ng-container matColumnDef="delete">
             <mat-header-cell *matHeaderCellDef mat-sort-header>  </mat-header-cell>
-            <mat-cell *matCellDef="let row" data-label="address"><mat-icon (click)="openDispatcher(addDispatcherTemplate,row,true)">edit</mat-icon> <mat-icon (click)="openDeleteDailog(deletetemplate,row)">delete</mat-icon></mat-cell>
+            <mat-cell *matCellDef="let row" data-label="address">
+              <mat-icon (click)="openDispatcher(addDispatcherTemplate,row,true)">edit</mat-icon> 
+              <mat-icon (click)="openDeleteDailog(deletetemplate,row)">delete</mat-icon>
+              <mat-icon class="rotate-arrow-icon" (click)="dispatcherDashboard(row)">arrow_drop_down_circle</mat-icon></mat-cell>
         </ng-container>
 
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="dispatcherDashboard(row)">
+      <mat-row *matRowDef="let row; columns: displayedColumns;">
       </mat-row>
     </mat-table>
   
@@ -105,13 +108,10 @@
                   <mat-form-field >
                       <input matInput placeholder="First Name" maxlength="50" formControlName="firstName" required>
                       <mat-hint align="end">{{addDispatcherForm.controls['firstName'].value.length}} / 50</mat-hint>
-                      <mat-error class="error-message" *ngIf="addDispatcherForm.controls['firstName'].errors">
-                       <span *ngIf="addDispatcherForm.controls['firstName'].errors.required">
-                        FirstName is Required</span></mat-error>
+  
                     </mat-form-field>
-                    <!-- <mat-error class="error-message" *ngIf="submitted && f.firstName.errors">
-                      <span *ngIf="f.firstName.errors">FirstName is required</span>
-                    </mat-error> -->
+                    <mat-error class="error-message" *ngIf="submitted && f.firstName.invalid">
+                       FirstName is Required</mat-error>
                   </div>
 
                   <div class="col-sm-12 col-md-6">
@@ -131,71 +131,61 @@
                               <mat-error class="error-message" *ngIf="userDetailsForm.get('bio').hasError(validation.type) && (userDetailsForm.get('bio').dirty || userDetailsForm.get('bio').touched)">{{validation.message}}</mat-error>
                               </mat-error> -->
                           </mat-form-field>
+                          <mat-error class="error-message" *ngIf="submitted && f.lastName.errors">
+                            <span *ngIf="f.lastName.errors.required">LastName is Required</span>
+                          </mat-error>
                   </div>
 
                   <div class="col-sm-12 col-md-6">
                     <mat-form-field class="col-sm-12 col-md-6">
                         <input matInput maxlength="50" placeholder="Email Id" formControlName="email" required>
                         <mat-hint align="end">{{addDispatcherForm.controls['email'].value.length}} / 50</mat-hint>
-                        <mat-error class="error-message" *ngIf="addDispatcherForm.controls['email'].errors">
-                          <span *ngIf="addDispatcherForm.controls['email'].errors.required">
-                           Email is Required</span></mat-error>
-                        <!-- <mat-error *ngFor="let validation of validation_messages.bio">
-                        <mat-error class="error-message" *ngIf="userDetailsForm.get('bio').hasError(validation.type) && (userDetailsForm.get('bio').dirty || userDetailsForm.get('bio').touched)">{{validation.message}}</mat-error>
-                        </mat-error> -->
                     </mat-form-field>
+                    <mat-error class="error-message" *ngIf="submitted && (f.email.errors || f.email.invalid)">
+                      <span *ngIf="f.email.errors?.required">Email is Required</span>
+                    </mat-error>
                   </div>
                   
                   <div class="col-sm-12 col-md-6">
                     <mat-form-field class="col-sm-12 col-md-6">
                         <input matInput  maxlength="10" placeholder="Phone Number" formControlName="phNum" required>
                         <mat-hint align="end">{{addDispatcherForm.controls['phNum'].value.length}} / 10</mat-hint>
-                        <mat-error class="error-message" *ngIf="addDispatcherForm.controls['phNum'].errors">
-                          <span *ngIf="addDispatcherForm.controls['phNum'].errors.required">
-                           Phone Number is Required</span></mat-error>
-                        <!-- <mat-error *ngFor="let validation of validation_messages.bio">
-                        <mat-error class="error-message" *ngIf="userDetailsForm.get('bio').hasError(validation.type) && (userDetailsForm.get('bio').dirty || userDetailsForm.get('bio').touched)">{{validation.message}}</mat-error>
-                        </mat-error> -->
                     </mat-form-field>
+                    <mat-error class="error-message" *ngIf="submitted && f.phNum.errors">
+                      <span *ngIf="f.phNum.errors.required">
+                       Phone Number is Required</span></mat-error>
                   </div>
 
                   <div class="col-sm-12 col-md-6">
                     <mat-form-field class="col-sm-12 col-md-6">
                         <input matInput  maxlength="20" placeholder="Register Id" formControlName="disRegId" required>
                         <mat-hint align="end">{{addDispatcherForm.controls['disRegId'].value.length}} / 20</mat-hint>
-                        <mat-error class="error-message" *ngIf="addDispatcherForm.controls['disRegId'].errors">
-                          <span *ngIf="addDispatcherForm.controls['disRegId'].errors.required">
-                           Dispatcher RegisterId is Required</span></mat-error>
-                        <!-- <mat-error *ngFor="let validation of validation_messages.bio">
-                        <mat-error class="error-message" *ngIf="userDetailsForm.get('bio').hasError(validation.type) && (userDetailsForm.get('bio').dirty || userDetailsForm.get('bio').touched)">{{validation.message}}</mat-error>
-                        </mat-error> -->
                     </mat-form-field>
+                    <mat-error class="error-message" *ngIf="submitted && f.disRegId.errors">
+                      <span *ngIf="f.disRegId.errors.required">
+                       Dispatcher RegisterId is Required</span></mat-error>
                   </div>
 
                   <div class="col-sm-12 col-md-6">
                     <mat-form-field class="col-sm-12 col-md-6">
                         <input matInput  maxlength="5" placeholder="Pincode" formControlName="pincode" required>
                         <mat-hint align="end">{{addDispatcherForm.controls['pincode'].value.length}} / 5</mat-hint>
-                        <mat-error class="error-message" *ngIf="addDispatcherForm.controls['pincode'].errors">
-                          <span *ngIf="addDispatcherForm.controls['pincode'].errors.required">
-                           Pincode is Required</span></mat-error>
-                        <!-- <mat-error *ngFor="let validation of validation_messages.bio">
-                        <mat-error class="error-message" *ngIf="userDetailsForm.get('bio').hasError(validation.type) && (userDetailsForm.get('bio').dirty || userDetailsForm.get('bio').touched)">{{validation.message}}</mat-error>
-                        </mat-error> -->
+                        
                     </mat-form-field>
+                    <mat-error class="error-message" *ngIf="submitted && f.pincode.errors">
+                      <span *ngIf="f.pincode.errors.required">
+                       Pincode is Required</span></mat-error>
                   </div>
 
                   <div class="col-sm-12 col-md-12">
                     <mat-form-field class="col-sm-12 col-md-6">
                         <input matInput  maxlength="256" placeholder="Address" formControlName="address" required>
                         <mat-hint align="end">{{addDispatcherForm.controls['address'].value.length}} / 256</mat-hint>
-                        <mat-error class="error-message" *ngIf="addDispatcherForm.controls['address'].errors">
-                          <span *ngIf="addDispatcherForm.controls['address'].errors.required">
-                           Address is Required</span></mat-error>
-                        <!-- <mat-error *ngFor="let validation of validation_messages.bio">
-                        <mat-error class="error-message" *ngIf="userDetailsForm.get('bio').hasError(validation.type) && (userDetailsForm.get('bio').dirty || userDetailsForm.get('bio').touched)">{{validation.message}}</mat-error>
-                        </mat-error> -->
                     </mat-form-field>
+                    <mat-error class="error-message" *ngIf="submitted && f.address.errors">
+                      <span *ngIf="f.address.errors.required">
+                        Address is Required
+                      </span></mat-error>
                   </div>
 
             </div>

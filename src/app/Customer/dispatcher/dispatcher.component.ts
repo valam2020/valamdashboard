@@ -69,6 +69,7 @@ export class DispatcherComponent implements OnInit{
   openDispatcher(templateRef:any,row:any,isEdit:boolean = false){
     this.clearDispatcher();  
     this.selectedDispatcher={};
+    this.submitted = false;
     this.isEdit = isEdit;
     if(isEdit){
         this.addDispatcherForm.patchValue({
@@ -121,7 +122,6 @@ export class DispatcherComponent implements OnInit{
   saveDispatcher(){
 
     this.submitted = false;
-    console.log(this.addDispatcherForm);
     if(this.addDispatcherForm.invalid)
     {
       this.submitted = true;
@@ -141,8 +141,10 @@ export class DispatcherComponent implements OnInit{
   }
 
   updateDispatcher(){
+    this.submitted = false;
     if(this.addDispatcherForm.invalid)
     {
+      this.submitted = true;
       return;
     }
 

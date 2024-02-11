@@ -25,12 +25,21 @@
     .mat-column-address{
       word-break: break-word;
     }
+
 }
 
 .mat-mdc-form-field  {
   min-width:100%
 }
 
+.mat-mdc-form-field-error{
+  font-size: 15px;
+  margin-top: -15px;
+}
+
+.rotate-arrow-icon{
+  transform: rotate(270deg);
+}
 
 
 .delete-dailog-actions{

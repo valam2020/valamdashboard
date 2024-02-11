@@ -75,6 +75,10 @@ export class DispatcherService {
     return this.httpService.post(url,body);
   }
 
+  PutMethod(url:string,body:any):Observable<any>{
+    return this.httpService.put(url,body);
+  }
+
   openSnackBar(message:any){
     this.snackBar.open(message, 'Close', {
       horizontalPosition: this.horizontalPosition,

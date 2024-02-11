@@ -39,7 +39,15 @@
             <ng-container matColumnDef="createdDate">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Created Date </mat-header-cell>
                 <mat-cell *matCellDef="let row" data-label="createdDate"> {{row.createdDate}} </mat-cell>
-            </ng-container>         
+            </ng-container>   
+            
+            <ng-container matColumnDef="actions">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>  </mat-header-cell>
+              <mat-cell *matCellDef="let row" data-label="actions">
+                <mat-icon (click)="openCarDailog(row)">edit</mat-icon> 
+                <mat-icon (click)="openDeleteCarDailog(row)">delete</mat-icon>
+              </mat-cell>
+          </ng-container>
        
           <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
           <mat-row *matRowDef="let row; columns: displayedColumns;">
