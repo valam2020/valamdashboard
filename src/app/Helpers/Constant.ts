@@ -46,6 +46,7 @@ export const ApiUrls:any={
         id:"driver/auth/{id}",
         getAll:"driver/fetch?dispatcher_id=",
         UpdateDispatcherDriver:'driver/updatedispId',
+        deleteDriver:'driver/delete',
     },
     dispatcherScheduler:{
        getSchedulers:"dispSch/fetchByDispatcher/"

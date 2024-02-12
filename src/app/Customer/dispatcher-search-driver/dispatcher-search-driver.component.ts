@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DispatcherService } from '../customer-service/dispatcher-service.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiUrls } from 'src/app/Helpers/Constant';
 import { MatDialog } from '@angular/material/dialog';
+import { DispatcherDriversComponent } from '../dispatcher-drivers/dispatcher-drivers.component';
 
 @Component({
   selector: 'app-dispatcher-search-driver',
@@ -19,6 +20,7 @@ export class DispatcherSearchDriverComponent implements OnInit{
   selectedDriverDetails: any;
   mapDriver:FormGroup<any>;
   driverDetailsWithoutDispatcher:any = [];
+  @ViewChild(DispatcherDriversComponent) DispatcherDriversComponent!:DispatcherDriversComponent;
   constructor(private dispatcherService:DispatcherService,private  fb:FormBuilder,public dialog: MatDialog)
   {
     this.mapDriver = this.fb.group({
@@ -84,14 +86,12 @@ export class DispatcherSearchDriverComponent implements OnInit{
       this.dispatcherService.post(ApiUrls.driver.UpdateDispatcherDriver,driverDetails).subscribe((s:any)=>{
          if(s!=null || s!=undefined)
          {
+          this.DispatcherDriversComponent.getAllDriversUnderDispatcher();
           this.isSelectedDrivers=false;
            this.mapDriver.reset();
            this.searchDrivers();
            this.dialog.closeAll();
            this.dispatcherService.openSnackBar("Successfully mapped driver to dispatcher!!!");
-            // this.messageService.add({severity:'info', summary: 'Driver added with dispatcher is updated successully'});
-            // this.getDriverDetailsByDispatcherId();
-            // this.getDriverDetailsWitoutDispatcher();
          }
       })
     

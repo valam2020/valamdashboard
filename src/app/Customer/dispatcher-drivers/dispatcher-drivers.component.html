@@ -39,7 +39,14 @@
             <ng-container matColumnDef="address">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Address </mat-header-cell>
                 <mat-cell *matCellDef="let row" data-label="address"> {{row.address}} </mat-cell>
-            </ng-container>         
+            </ng-container>
+            
+            <ng-container matColumnDef="actions">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>  </mat-header-cell>
+              <mat-cell *matCellDef="let row" data-label="actions">     
+                <mat-icon (click)="openDeleteDailog(deleteDriverFormDailog,row)">delete</mat-icon> 
+              </mat-cell>
+          </ng-container>
        
           <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
           <mat-row *matRowDef="let row; columns: displayedColumns;">
@@ -49,3 +56,23 @@
         <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
       </div>
 </div>
+
+<ng-template #deleteDriverFormDailog>
+  <h1 mat-dialog-title>Delete Car </h1>
+  <div class="delete-content">
+  Are you sure want to delete the Driver <b>{{selectDriver.firstName}} {{selectDriver.lastName}}</b>?.
+  </div>
+  <div mat-dialog-content>
+          <div mat-dialog-actions class="delete-dailog-actions">
+              <div class="no-css">
+                  <button mat-raised-button (click)="cancelDailog()">Cancel</button>
+              </div>
+              <div class="yes-css">
+                  <button mat-raised-button class="confirm-css" color="accent" (click)="deleteDriverDetails()">Delete</button>
+             
+             </div>
+              
+            </div>
+
+  </div>
+</ng-template>

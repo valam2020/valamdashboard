@@ -6,6 +6,7 @@ import { MatSort } from '@angular/material/sort';
 import { ActivatedRoute } from '@angular/router';
 import { DispatcherService } from '../customer-service/dispatcher-service.service';
 import { ApiUrls } from 'src/app/Helpers/Constant';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dispatcher-drivers',
@@ -15,7 +16,7 @@ import { ApiUrls } from 'src/app/Helpers/Constant';
 export class DispatcherDriversComponent implements OnInit{
 
   driversList:any = [];
-  displayedColumns = ['driverName', 'dateOfBirth','emailid','phNum','address'];
+  displayedColumns = ['driverName', 'dateOfBirth','emailid','phNum','address','actions'];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -23,7 +24,9 @@ export class DispatcherDriversComponent implements OnInit{
   @Input() dispatcherId:number = 0;
   @Input() openDriverCars:boolean = false;
   @Input() selectedDriverDetails:any;
-  constructor(private dispatcherBehaviourSubject:DispatcherBehaviourService, private activeRoute:ActivatedRoute,private service:DispatcherService){
+  selectDriver:any = {};
+  constructor(private dispatcherBehaviourSubject:DispatcherBehaviourService, private activeRoute:ActivatedRoute,
+    private service:DispatcherService,public dialog: MatDialog){
     this.activeRoute.params.subscribe((data:any)=>{
       this.dispatcherId = data.id;
     });
@@ -71,4 +74,35 @@ export class DispatcherDriversComponent implements OnInit{
     // this.dispatcherBehaviourSubject.insertDrivers(data);
   }
 
+  openDeleteDailog(templateRef:any,row:any){
+    this.selectDriver = row;
+    const dialogRef = this.dialog.open(templateRef,{
+      width: '800px',disableClose: true 
+    });
+  }
+
+  cancelDailog(){
+    this.selectDriver = {};
+    this.dialog.closeAll();
+  }
+
+  
+  deleteDriverDetails()
+  {
+    var deleteDetails={
+      "id": this.selectDriver.id
+    }
+    this.service.post(ApiUrls.driver.deleteDriver,deleteDetails).subscribe((s)=>{
+      if(s.httpStatus==400){
+        this.service.errorSnackBar(s.message);
+        this.cancelDailog();
+      }
+      else{
+        this.service.errorSnackBar('Record is deleted successully');
+        this.getAllDriversUnderDispatcher();
+      }
+    },(error:any)=>{
+      console.log(error);
+    }) 
+   }
 }
